@@ -61,10 +61,10 @@ time.sleep 2000
 ```
 
 ### One kind of Fibonacci
-There is also possible use named parameters instead of stack. Then variable passed via local variable context. For the <b>use</b> subsystem name can have an alias name, and the alias can also be empty. Therefore <b>calc</b> is actually <b>int.calc</b>
+There is also possible use named parameters instead of stack. Then variable passed via local variable context. For the <b>use</b> subsystem name can have an alias name, and the alias can also be empty. Therefore <b>calc</b> is actually <b>int.calc</b>. Int subystem has its own stack where values are pushed and popped from the application stack. e.g. <code>int.calc 1 push subt pop</code> is push 1, push value from from the application stack, then do subtract by pop both values (note that second value is subtracted from the topmost value) and that value is then popped into application stack, which is then popped into register called 'count'. 
 
 ```
- # fibonacci 3         				
+# fibonacci 3         				
 use INT ''					
 fib n0:0 n1:1 count:20				
 
@@ -92,7 +92,7 @@ eval 3 "hello again" =$ =dino
 ```
 
 ### Lambdas
-<b>Lambda</b> create functions to stack. The <b>call</b> then can be used to call it. The other ways to use them are e.g. list subsystem iterators or time repeaters.
+<b>Lambda</b> create functions into stack. The <b>call</b> then can be used to call it. The other ways to use them are e.g. list subsystem iterators or time repeaters.
 
 ```
 lambda
