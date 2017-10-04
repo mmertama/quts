@@ -1,0 +1,10 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+use AUDIO ''
+! "Twinkle Twinkle little star"
+let twinkle "E E B B C# C# B2 A A G# G# F# F# E2 B B A A G# G# F#2 B B A A G# G# F#2 E E B B C# C# B2 A A G# G# F# F# E2"
+beep twinkle
+! Does it sound good?
+! Higher!
+beep twinkle 1000 5
+wait
+! Played

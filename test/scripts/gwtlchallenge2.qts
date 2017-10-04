@@ -1,0 +1,88 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+# http://www.gatewaytechnolabs.fi/koodihaaste/javascript/
+# GATE      | ABCDEF GHIJKL ERPHJJ EDETDQ               | Mahdollinen
+# WAY       | DFGADF FIHOEF DOIWYH FUFWYD               | Mahdollinen
+# TECHNO    | HFOEIH IFTEOI ICHOEH INFOEH               | Ei Mahdollinen
+# LABS      | LABSDF BCDEFG IHFOEI IHFOEF               | Ei mahdollinen
+# DEVEL     | IOHFED RIFHEW IEOHFD EOVIUE HULILA EEEEEE | Mahdollinen
+# OPER      | AAAAAA OPPPPP EEEEEE RRRRRR ABCDEF        | Ei mahdollinen
+
+use list ""
+use string
+new
+
+    new "ABCDEF" "GHIJKL" "ERPHJJ" "EDETDQ"
+    push "GATE"
+    append $ $
+
+    new "DFGADF" "FIHOEF" "DOIWYH" "FUFWYD"
+    push "WAY"
+    append $ $
+
+    new "HFOEIH" "IFTEOI" "ICHOEH" "INFOEH"
+    push "TECHNO"
+    append $ $
+
+    new "LABSDF" "BCDEFG" "IHFOEI" "IHFOEF"
+    push "LABS"
+    append $ $
+
+    new "IOHFED" "RIFHEW" "IEOHFD" "EOVIUE" "HULILA" "EEEEEE"
+    push "DEVEL"
+    append $ $
+
+    new "AAAAAA" "OPPPPP" "EEEEEE" "RRRRRR" "ABCDEF"
+    push "OPER"
+    append $ $
+
+pop data
+len data
+
+for $ pindex
+    at data pindex
+    at 0
+    pop current
+    at data pindex
+    at 1
+    pop currentList
+    ! ($pindex) ($current) is
+
+    process
+    ;;
+
+fun process
+len current
+if 0
+    ! Mahdollinen
+    return  
+    ;;
+string.substr current 0 1
+pop char
+len currentList
+let found false
+var index 0
+for $ index
+    at currentList index
+    string.match char
+    if true
+        let found true
+        break
+        ;;
+    ;;
+if found false
+    ! Ei Mahdollinen
+    return 
+    ;;
+remove currentList index
+pop currentList
+string.substr current 1
+pop current
+process
+;;
+
+fun append
+new
+add $ $
+swap
+add $
+;;

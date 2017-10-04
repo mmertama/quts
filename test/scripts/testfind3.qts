@@ -1,0 +1,61 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+! Find stuff
+USE QT ""
+USE STRING ""
+use TIME
+use INT
+
+LET onSyntaxErrorQuit true
+LET onErrorQuit true
+time.SLEEP 500
+FIND "helpView"
+ASSERT
+SET "visible" "true"
+! find all
+FIND "nameItem"
+FOR $ index
+    FIND "nameItem" index
+    POP
+    GET "text"
+    ! ($)
+    ;;
+time.SLEEP 50
+FID "view" "HelpView"
+ASSERT
+GET "count" =count
+! count is ($count)
+push 0
+for
+# find a spesific list item of which name is "or", not "xor"
+    find "nameItem" "text" "^OR"
+    if true
+        break
+        ;;
+# if not found find a view from HelpView (.qml)
+    ! seek... ($)
+    time.get
+    FID "view" "HelpView"
+    ASSERT
+    time.delta
+    ! ($) ms
+    GET "currentIndex"
+    INC 1
+    push
+    push
+    push count
+    INT.calc push push lessThan pop
+    if false
+        error "Not Found!"
+        ;;
+    SET "currentIndex" $
+    ;;
+! found the item
+click
+# go to its parent
+PARENT
+# and find its child
+! and its sibling
+CHILD "objectName" "comments"
+ASSERT
+SET "color" "Red"
+! End

@@ -1,0 +1,67 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+LET printPrefix "inputtest:"
+LET debug true
+LET onSyntaxErrorQuit true
+LET onErrorQuit true
+
+USE QT
+
+JUMP Start
+# sub routine
+% CheckField
+# expects stack have:
+# a control
+# a default
+# return label
+# wait item
+POP _control
+POP _default
+POP _return
+! wait for ($_control)
+FOCUS _control
+SET "text"
+# duplicates
+PUSH
+LEN $
+JUMP Empty 0
+JUMP End
+% Empty
+POP
+GET "text" _default
+PUSH _default
+% End
+JUMP $_return
+
+% Start
+
+PUSH "Back1"
+PUSH "markus"
+PUSH "usernameField"
+JUMP CheckField
+
+% Back1
+PUSH
+! name: ($)
+
+PUSH "Back2"
+PUSH "maomao"
+PUSH "passwordField"
+JUMP CheckField
+
+% Back2
+PUSH
+! password: ($)
+
+PUSH "Back3"
+PUSH "dingdong"
+PUSH "serveraddressField"
+JUMP CheckField
+
+% Back3
+PUSH
+! server: ($)
+
+FOCUS "loginBtn"
+CLICK
+
+! test done

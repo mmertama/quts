@@ -1,0 +1,44 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+let printPrefix "small tests:"
+let debug false
+let onSyntaxErrorQuit true
+let onErrorQuit true
+
+! test2
+
+use string ''
+import ":/scripts/test1.qts"
+import ":/scripts/math.qts" "calculator"
+
+! before call
+call test1.sayHi
+! after call
+
+LET testValue "test text"
+LEN testValue
+! "($testValue)" length is ($)
+SUBSTR testValue 4
+PUSH
+LEN $
+SWAP
+! "($)" length is ($)
+LEN testValue
+INC -5
+SUBSTR testValue 1 $
+PUSH
+LEN $
+SWAP
+! "($)" length is ($)
+
+PUSH 1
+PUSH 2
+PUSH 3
+PUSH 4
+
+SWAP 2
+! ($) should be two, ($), ($), ($)
+
+call calculator.summa =$ 5 7
+! 5 + 7 = ($)
+
+

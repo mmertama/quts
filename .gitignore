@@ -1,0 +1,6 @@
+test/build-QutsConsole-Desktop_Qt_5_6_0_MinGW_32bit-Debug/
+test/build-QutsConsole-Android_for_armeabi_v7a_GCC_4_9_Qt_5_5_1-Debug
+test/build-QutsConsole-Desktop_Qt_5_5_1_clang_64bit2-Debug
+*.pro.user*
+builds/
+quts.pro.user

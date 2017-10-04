@@ -1,0 +1,49 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt
+
+use graphics
+use time
+use float
+
+var degree 0
+
+lambda
+    push degree
+    inc 1
+    push
+    pop degree
+    tick $ 300 $
+    ;;
+
+graphics.resize 600 600
+
+push
+time.repeater 100 $ maxInt "lightblue"
+time.repeater 1000 $ maxInt "red"
+
+# default is forever
+time.repeat 60000
+
+fun tick
+    pop position
+    pop length
+    push length
+    push position
+    float.calc push rad sin push mul pop
+    inc length
+    pop x
+    push length
+    push position
+    float.calc push rad cos push mul pop
+    inc length
+    pop y
+#    ! tick ($position) ($length) ($x) ($y)
+    graphics.penColor $
+    graphics.line 300 300 x y
+    graphics.show
+    ;;
+    
+    
+    
+
+
+

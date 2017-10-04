@@ -1,0 +1,40 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+# http://www.99-bottles-of-beer.net/lyrics.html
+# (c) Markus Mertama 
+
+use INT ''
+use STRING ''
+
+let numberOfBottles 99
+
+push numberOfBottles
+inc -1
+for $ current
+    push numberOfBottles
+    push current
+    calc push push subt dup pop
+    makeBottleString $ =bottles
+    ! ($bottles) of beer on the wall, ($bottles) of beer.
+    calc 1 swap subt pop
+    makeBottleString $ =bottles
+    ! Take one down and pass it around, ($bottles) of beer on the wall.
+    ;;
+
+! No more bottles of beer on the wall, no more bottles of beer.
+
+push numberOfBottles
+makeBottleString $ =bottles
+! Go to the store and buy some more, ($bottles) of beer on the wall.
+
+fun makeBottleString
+    push
+    if 1
+        pop
+        push "1 bottle"
+    else
+        add " bottles"
+    ;;
+;;
+
+
+

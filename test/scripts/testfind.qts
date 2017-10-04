@@ -1,0 +1,47 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+LET onSyntaxErrorQuit true
+LET onErrorQuit true
+USE QT ""
+USE string ""
+
+FIND "resources"
+SET "visible" "true"
+# counter starts 0
+PUSH 0
+for
+    PUSH
+    ! Finding item number ($)
+    # duplicate counter
+    PUSH
+    # find counter nth item
+    FIND "listitem" $
+    # if not found give up
+    push
+    if false
+        break
+        ;;
+     pop
+    # inc counter
+    inc 1
+    # get text
+    get "name"
+    # compare
+    match "testfind" $
+    # if not found
+    push
+    if true
+        break
+        ;;
+    pop
+    ;;
+
+if true
+    find "fileList"
+    # focus set number of found items on stack
+    assert
+    # index should be on top of stack
+    set "currentIndex" $
+else
+! Name not found :-(
+;;
+! End

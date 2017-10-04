@@ -1,0 +1,121 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt
+# note that difference between let and var is that let (and _ name ) always refer to global, when var in source global maybe
+# be child scope when invoked from another scope
+let foo "boo"
+let bar "bee"
+! 1 ($foo) ($bar) 
+scope0
+! 2 ($foo) ($bar)
+assert foo "boo"
+assert bar "bee"
+
+scope1
+! 3 ($foo) ($bar)
+assert foo "boo"
+assert bar "bee"
+
+for 2
+    var bar "zup"
+    for 1
+        var bar "zio"
+        assert bar "zio"
+        assert _bar "bee"
+    ;;
+    assert bar "zup"
+    assert _bar "bee"
+;;
+assert bar "bee"
+assert _bar "bee"
+
+var counter 0
+for 4 count
+    push counter
+    assert counter count
+    inc 1
+    pop counter
+;;
+assert counter 4
+assert count 4
+
+for 3 count
+    for 2 count
+        ! inner ($count)
+    ;;
+        ! outter ($count)
+;;
+assert count 3
+
+scope2
+! 3 ($foo) ($bar)
+assert foo "glob"
+
+
+var bar "zap"
+
+scope3 "zap" =bar
+! 4 ($foo) ($bar)
+assert "zap" bar
+
+scope4
+! 5 ($foo) ($bar)
+assert foo "glob"
+assert "zap" bar
+
+recursive 5 =foobar
+assert foobar 0
+
+var daa "daa"
+if 1 1
+    var daa "hoo"
+;;
+assert daa "daa"
+
+var daa "daa"
+if 1 0
+    var daa "hoo"
+else
+    var daa "soo"
+;;
+
+assert daa "daa"
+
+
+
+fun scope0
+    var foo "bar"
+    ! s1 ($foo) ($bar)
+    assert foo "bar"
+    assert bar "bee"
+   ;;
+
+fun scope1
+    var foo "fuu"
+    ! s1 ($foo) ($_foo)
+    call scope0
+    assert foo "fuu"
+;;
+
+fun scope2
+    let foo "glob"
+;;
+
+fun scope3
+;;
+
+fun scope4
+    var bar 0
+    scope3 "zoo" =bar
+    ! s1 ($foo) ($bar) 
+;;
+
+fun recursive
+    inc -1
+    pop local
+    if local 0
+        push local
+        return
+    ;;
+    ! before ($local)
+    call recursive local =$
+    ! after ($local)
+;;

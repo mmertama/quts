@@ -1,0 +1,21 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+# fibonacci 3
+use INT ''
+fib n0:0 n1:1 count:20
+
+fun fib n0 n1 count
+! ($n0)
+push count
+calc 1 push subt pop
+pop count
+if not count 0
+    push n0
+    push n1
+    calc push push sum pop
+    pop n
+    call fib n0:n1 n1:n count:count
+    ;;
+;;
+
+
+    

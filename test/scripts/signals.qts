@@ -1,0 +1,38 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+USE QT q
+LET debug true
+! LET focus
+q.FIND "qutsConsole"
+! connect to signal
+q.SLOT "echo(string)"
+! send signal to echo "fooo"
+q.QUTSSIGNAL "ECHO" "fooo"
+! wait it to happen
+q.WAIT 10000
+
+if true
+    ! event echoed  "($)"
+else
+    ! timeout
+    ;;
+
+q.FIND "button1"
+q.SET "text" "push me!"
+q.SET "visible" "true"
+q.SLOT "clicked()" wellPressed
+! Print button!
+q.WAIT 5000
+if true
+    ! button pressed!
+else
+    ! timeout
+    ;;
+! Done
+! End
+
+fun wellPressed
+! Whoa, Im im-pressed!
+! fooo
+! huu
+;;
+

@@ -1,0 +1,45 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+USE INT
+INT.calc 2 3 sum
+INT.calc pop
+! 2 + 3 = ($)
+USE FLOAT
+FLOAT.calc 2.2 2.5
+FLOAT.calc mul
+FLOAT.calc pop
+! 2.2 * 2.5 = ($)
+FLOAT.calc 200 sqrt dup pop
+! ($)
+FLOAT.calc 2 pow pop
+! ($)
+INT.calc 32 3 div pop
+FLOAT.calc 32 3 div pop
+! real number 32/3 = ($), int 32/3 = ($)
+PUSH 10
+PUSH
+FLOAT.calc push pop
+! ten ? ($)
+INT.calc push dup 3 remainder pop pop
+! remainder ($) ten ? ($)
+LET eka 23.42
+LET toka 32.1
+PUSH eka
+PUSH toka
+FLOAT.calc push push lessThan pop
+PUSH
+! result:($)
+push
+if true
+    ! ($eka) is less than ($toka)
+else
+    ! ($eka) is more than ($toka)
+;;
+
+
+fun summa
+int.calc push push sum pop
+;;
+
+
+
+

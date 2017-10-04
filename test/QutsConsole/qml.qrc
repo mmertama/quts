@@ -1,0 +1,33 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>FileList.qml</file>
+        <file>../scripts/eval.qts</file>
+        <file>../scripts/fibonacci.qts</file>
+        <file>../scripts/math.qts</file>
+        <file>../scripts/signals.qts</file>
+        <file>../scripts/test1.qts</file>
+        <file>../scripts/test2.qts</file>
+        <file>../scripts/testfind.qts</file>
+        <file>../scripts/twinkletwinkle.qts</file>
+        <file>HelpView.qml</file>
+        <file>../scripts/unit.qts</file>
+        <file>../scripts/testfind3.qts</file>
+        <file>../scripts/testfind2.qts</file>
+        <file>../scripts/testSignals.qts</file>
+        <file>../scripts/testQt1.qts</file>
+        <file>../scripts/99bottlesOfBeer.qts</file>
+        <file>../scripts/fibonacci2.qts</file>
+        <file>../scripts/gwtlchallenge2.qts</file>
+        <file>../scripts/gwtlchallenge.qts</file>
+        <file>../scripts/fibonacci3.qts</file>
+        <file>../scripts/testlocals.qts</file>
+        <file>ConsoleView.qml</file>
+        <file>SourceView.qml</file>
+        <file>DataView.qml</file>
+        <file>../scripts/store.qts</file>
+        <file>../scripts/functions.qts</file>
+        <file>../scripts/graphics.qts</file>
+        <file>../scripts/watch.qts</file>
+    </qresource>
+</RCC>

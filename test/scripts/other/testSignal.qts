@@ -1,0 +1,70 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+LET printPrefix "sigtest:"
+LET debug true
+LET onSyntaxErrorQuit true
+LET onErrorQuit true
+
+PUSH "foo"
+PUSH
+! ($)
+LET foo "bar"
+! ($foo)
+LET foo $
+! ($foo)
+! ok
+
+
+LET ooc 0
+JUMP hop1 ooc 0
+ERROR "fail"
+% hop1
+PUSH ooc
+ADD 1
+POP ooc
+JUMP hop2 ooc 1
+ERROR "another fail"
+% hop2
+
+! wait loginBtn to appear...
+FOCUS "loginBtn"
+! test started
+SPEED 1000
+! slow
+SLOT "clicked()" somewhere
+! press button
+! soon
+! blaa blass
+! are u ready?
+WAIT
+! dont print this
+% somewhere
+! Login button pressed
+! print this!
+SPEED
+! should not stop here as no SIGNALS
+WAIT
+! clicked again
+SLOT "clicked()"
+WAIT
+! ok
+LET count 0
+SLOT "clicked()" one
+SLOT "clicked()" another
+! wait em all
+% back
+PUSH count
+WAIT
+% one
+! one
+ADD 1
+POP count
+JUMP end count 2
+JUMP back
+% another
+! another
+ADD 1
+POP count
+JUMP end count 2
+JUMP back
+% end
+! end is here

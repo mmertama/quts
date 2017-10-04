@@ -1,0 +1,21 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt
+
+use graphics
+use time
+
+graphics.line 50 50 150 50 150 200 50 200 50 50
+graphics.line 130 190 160 220
+
+graphics.line 200 50 200 200 300 200 300 50
+
+graphics.line 350 50 450 50
+graphics.line 400 50 400 200
+
+graphics.line 600 50 500 50 500 100 600 100 600 200 500 200
+
+graphics.line 20 230 620 230
+graphics.line 20 240 620 240
+
+graphics.show true
+
+time.sleep 2000

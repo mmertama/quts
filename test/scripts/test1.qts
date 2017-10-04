@@ -1,0 +1,35 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+use TIME
+LET printPrefix "testing:"
+LET onSyntaxErrorQuit true
+LET onErrorQuit true
+LET debug false
+PUSH "last chance \"here\""
+! sleep
+time.get
+time.SLEEP 100
+time.delta
+! test1
+! slept ($) milliseconds
+PUSH commandSpeed
+LET commandSpeed 1000
+! slow 1
+! slow 2
+LET commandSpeed $
+! done
+! sleep 1s
+LET commandSpeed 200
+! waited... sleep 4s
+puke
+LET commandSpeed 1000
+! waited again
+LET commandSpeed 0
+
+fun sayHi
+! Hi from test1
+;;
+
+
+
+
+

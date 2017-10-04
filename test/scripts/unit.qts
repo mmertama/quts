@@ -1,0 +1,73 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+! Unit tests
+use QT
+use STRING
+use TIME
+
+let debug false
+let wannaDebug debug
+
+makeDebug
+
+push "watch"
+push "graphics"
+push "twinkletwinkle"
+push "99bottlesOfBeer"
+push "test1"
+push "test2"
+push "testfind"
+push "testfind2"
+push "testfind3"
+push "fibonacci"
+push "math"
+push "signals"
+push "fibonacci2"
+push "gwtlchallenge"
+push "gwtlchallenge2"
+push "testQt1"
+push "eval"
+push "testlocals"
+push "fibonacci3"
+push "store"
+push "functions"
+
+for maxInt
+    test
+    not
+    if true
+        break
+        ;;
+    push
+    push
+    ! Next test is ($)
+    push ":/scripts/"
+    string.add $
+    string.add ".qts"
+    time.get =timed
+# var timed $
+    load $
+    time.delta timed
+    ! Loading time ($) ms
+    call $
+    # time.sleep 2000
+    makeDebug
+    ;;
+
+! end of tests
+
+fun makeDebug
+    let debug wannaDebug
+    let onSyntaxErrorQuit true
+    let onErrorQuit true
+    let printPrefix
+    let commandSpeed 0
+    qt.find "helpView"
+    assert
+    qt.set "visible" false
+    # time.sleep 500
+    qt.find "resources"
+    assert
+    qt.set "visible" false
+    # time.sleep 500
+    ;;
+

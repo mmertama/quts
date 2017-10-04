@@ -1,0 +1,121 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt
+
+use list
+
+hello
+
+fun hi
+    ! Hi ($) !
+    ;;
+
+hi "you"
+
+fun five
+    push 5
+    ;;
+
+
+five =$
+hi $
+
+
+fun rec
+    inc -1
+    pop local
+    if not local 0
+        push local
+        push
+        ! rec ($)
+        rec $
+        ;;
+    ;;
+
+rec 6
+
+lambda
+    ! nameless
+    ;;
+
+call $
+
+
+fun testLambda0
+    var something "something"
+    var somethingElse "somethingElse"
+    lambda something
+        ! ($something)
+        ;;
+    ;;
+
+var something "foolish"
+
+testLambda0 =$
+pop lambdaInReg
+
+call lambdaInReg
+
+fun testLambda1
+    var something "something"
+    var somethingElse "somethingElse"
+    lambda something
+        ! ($something) is ($)
+        ;;
+    ;;
+
+
+testLambda1 =$
+
+call $ "funfun"
+
+var value "diipdaa"
+
+lambda value
+    hi value
+    ;;
+
+var value "doodoo"
+
+call $
+! is not ($value)
+
+list.new "A" "B" "C" "D"
+
+push
+pop mylist
+
+fun named
+    ! named ($)
+    ;;
+
+
+list.iterate named
+
+lambda
+    ! unnamed ($)
+    ;;
+
+push mylist
+
+list.iterate $
+
+
+testlambda1 =$
+
+push mylist
+
+list.iterate $
+
+! done
+
+fun hello
+    ! hello
+    ;;
+
+
+
+
+
+
+
+
+

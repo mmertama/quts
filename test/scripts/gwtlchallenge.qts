@@ -1,0 +1,87 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+# http://www.gatewaytechnolabs.fi/koodihaaste/javascript/
+# GATE      | ABCDEF GHIJKL ERPHJJ EDETDQ               | Mahdollinen
+# WAY       | DFGADF FIHOEF DOIWYH FUFWYD               | Mahdollinen
+# TECHNO    | HFOEIH IFTEOI ICHOEH INFOEH               | Ei Mahdollinen
+# LABS      | LABSDF BCDEFG IHFOEI IHFOEF               | Ei mahdollinen
+# DEVEL     | IOHFED RIFHEW IEOHFD EOVIUE HULILA EEEEEE | Mahdollinen
+# OPER      | AAAAAA OPPPPP EEEEEE RRRRRR ABCDEF        | Ei mahdollinen
+
+use LIST list
+use STRING string
+
+list.new "ABCDEF" "GHIJKL" "ERPHJJ" "EDETDQ"
+push "GATE"
+push
+! ($) is
+process $ $
+
+list.new "DFGADF" "FIHOEF" "DOIWYH" "FUFWYD"
+push "WAY"
+push
+! ($) is
+process $ $
+
+list.new "HFOEIH" "IFTEOI" "ICHOEH" "INFOEH"
+push "TECHNO"
+push
+! ($) is
+process $ $
+
+
+list.new "LABSDF" "BCDEFG" "IHFOEI" "IHFOEF"
+push "LABS"
+push
+! ($) is
+process $ $
+
+list.new "IOHFED" "RIFHEW" "IEOHFD" "EOVIUE" "HULILA" "EEEEEE"
+push "DEVEL"
+push
+! ($) is
+process $ $
+
+list.new "AAAAAA" "OPPPPP" "EEEEEE" "RRRRRR" "ABCDEF"
+push "OPER"
+push
+! ($) is
+process $ $
+
+fun process
+push 
+list.len
+if 0
+    ! Mahdollinen
+    return
+    ;;
+push
+string.substr 0 1
+swap 2
+push
+list.len
+let found false
+for $ index
+    push
+    swap
+    list.at index
+    swap 2
+    push
+    swap 2
+    swap
+    string.match $ $
+    if true
+        pop
+        let found true
+        break
+        ;;
+    swap 
+    ;;
+if found false
+    ! Ei Mahdollinen
+    return
+    ;;
+list.remove index
+swap
+string.substr 1
+call process
+;;

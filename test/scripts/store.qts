@@ -1,0 +1,37 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+! Store test
+
+use STORE
+
+push "Magic"
+store.write Magic
+
+store.read Magic
+! ($)
+
+store.write Some 1234
+
+store.read Some =TheReg
+
+! ($TheReg)
+
+store.contains Inc
+if false
+    store.write Inc 0
+    ;;
+store.read Inc
+push
+! Increment is ($)
+inc 1
+store.write Inc
+store.read Inc
+! Increment is now ($)
+store.container
+! Inside ($)
+
+
+
+
+
+
+

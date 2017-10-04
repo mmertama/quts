@@ -1,0 +1,23 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+
+use LIST
+use INT ""
+eval "! Hello"
+eval "! hi ($)" "you"
+push "Hello again"
+push "! Message: ($)"
+push "push 21"
+push "push \"galileo\""
+push "! you are evaled"
+eval 3 "hello again" =$ =dino
+! after eval ($) and ($dino)
+list.new "calc push push subt pop" "! correct 3 - 7 = ($)" "push \"kissa\""
+eval $ 3 7 =fafa
+assert "kissa" fafa
+! what was that?
+! Is this \n ok?
+PUKE
+
+push "! Hello from ($location)"
+eval 1 location:"Tampere"
+

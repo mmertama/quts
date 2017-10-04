@@ -1,0 +1,41 @@
+# This file is part of Quts, Copyright 2017 Markus Mertama. Quts is distributed under the GNU General Public License (GNU GPL) version 3.  See License.txt 
+
+# test for gui test
+LET commandSpeed 0
+LET onSyntaxErrorQuit true
+LET onErrorQuit true
+
+USE STRING ''
+
+LET name "Fibonacci"
+LET counter 20
+
+! Calculate first ($counter) ($name) numbers
+PUSH name
+ADD ":"
+POP printPrefix
+
+LET n0 0
+LET n1 1
+PUSH n1
+PUSH n0
+! ($)
+FOR
+    ! ($)
+    if counter 0
+        break
+        ;;
+    PUSH n1
+    PUSH n1
+    PUSH n0
+    INC $
+    POP n1
+    POP n0
+    PUSH counter
+    INC -1
+    POP counter
+    PUSH n1
+    ;;
+
+! Fibonacci done
+
