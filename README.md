@@ -27,13 +27,13 @@ For using Quts for automated testing you shall embed qutslib using in your appli
 Here are basic features explained by example.
 
 
-#Hello world
+### Hello world
 Printing is done using with <b>!</b> command. 
 
 ```
 ! Hello World 
 ```
-#Hello
+### Hello
 Functions can be created with <b>fun</b> command and its block is closed using block closing notation <b>;;</b>. In printing ($NAME) refers to value in register, if NAME is omitted, the value printed is popped from the stack. Functions are called with their name and command line is pushed into stack. <b>$</b> is generic stack variable that is popped on every reference.
 
 ```
@@ -44,8 +44,8 @@ fun hi
 hi "you"
 ```
 
-# Graphcis
-Subsystems are dynamically loaded using <b>use</b> command. 
+### Graphcis
+Subsystems are dynamically loaded using <b>use</b> command. Subsystem functions are called with <b>.</b> notation. 
 
 ```
 use graphics
@@ -60,8 +60,8 @@ graphics.show true
 time.sleep 2000
 ```
 
-# One kind of Fibonacci
-There is also possible use named parameters instead of stack. Then variable passed via local variable context.
+### One kind of Fibonacci
+There is also possible use named parameters instead of stack. Then variable passed via local variable context. For the <b>use</b> subsystem name can have an alias name, and the alias can also be empty. Therefore <b>calc</b> is actually <b>int.calc</b>
 
 ```
  # fibonacci 3         				
@@ -83,7 +83,7 @@ if not count 0
 ;;
 ```
 
-# Return values
+### Return values
 Return values are stored from stack using with <b>=</b>, otherwise stack is cleaned after function call. 
 Eval can create runnable functions from strings and execute them immediately.
 
@@ -91,7 +91,7 @@ Eval can create runnable functions from strings and execute them immediately.
 eval 3 "hello again" =$ =dino
 ```
 
-# Lambdas
+### Lambdas
 <b>Lambda</b> create functions to stack. The <b>call</b> then can be used to call it. The other ways to use them are e.g. list subsystem iterators or time repeaters.
 
 ```
@@ -104,7 +104,7 @@ call $
 
 
 
-# Road to Quts
+## Road to Quts
 
 Basically its story can be dated somewhere back to year 2003 and Doom. I implemented a copy protection system for S60 C2Doom as an interpreter to obfuscate the registration code. That language purpose was to be obscure “write only” language. It featured every command was a single character and program was written as single string. Program was loaded and executed on single 8-bit stack. Therefore program get changed on every step. Furthermore It had only single character hexadecimal numers as command, i.e. ‘9’ was a command that writes int nine into stack and e.g. something like “99*1+!” and writes “82” on console (assuming ‘!’ is a print command). However it was a complete programming language implementing conditional branching and label style jumping.
 
