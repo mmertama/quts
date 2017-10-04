@@ -34,7 +34,7 @@ Printing is done using with <b>!</b> command.
 ! Hello World 
 ```
 #Hello
-Functions can be created with <b>fun<b> command and its block is closed using block closing notation <b>;;</b>. In printing ($<NAME>) refers to value in register, if NAME is omitted, the value printed is popped from the stack. Functions are called with their name and command line is pushed into stack. <b>$</b> is generic stack variable that is popped on every reference.
+Functions can be created with <b>fun</b> command and its block is closed using block closing notation <b>;;</b>. In printing ($NAME) refers to value in register, if NAME is omitted, the value printed is popped from the stack. Functions are called with their name and command line is pushed into stack. <b>$</b> is generic stack variable that is popped on every reference.
 
 ```
 fun hi
