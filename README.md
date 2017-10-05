@@ -61,7 +61,7 @@ time.sleep 2000
 ```
 
 ### One kind of Fibonacci
-There is also possible use named parameters instead of stack. Then variable passed via local variable context. For the <b>use</b> subsystem name can have an alias name, and the alias can also be empty. Therefore <b>calc</b> is actually <b>int.calc</b>. Int subystem has its own stack where values are pushed and popped from the application stack. e.g. <code>int.calc 1 push subt pop</code> is push 1, push value from from the application stack, then do subtract by pop both values (note that second value is subtracted from the topmost value) and that value is then popped into application stack, which is then popped into register called 'count'. 
+There is also possible use named parameters instead of stack. Then variable passed via local variable context. For the <b>use</b> subsystem name can have an alias name, and the alias can also be empty. Therefore <b>calc</b> is actually <b>int.calc</b>. Int subystem has its own stack where values are pushed and popped from the application stack. e.g. <code>int.calc 1 push subt pop</code> can be traslated as push 1 into math stack, push value from from the application stack, then do subtract by pop both values (note that second value is subtracted from the topmost value) and that value is then popped into application stack, which is then popped into register called 'count'. Basically doing expression: count = count - 1. At the end of <b>if</b> block there is a recursive call of fib function. The <b>call</b> here can be omitted.
 
 ```
 # fibonacci 3         				
@@ -85,7 +85,7 @@ if not count 0
 
 ### Return values
 Return values are stored from stack using with <b>=</b>, otherwise stack is cleaned after function call. 
-Eval can create runnable functions from strings and execute them immediately.
+<b>Eval</b> can create runnable functions from strings and execute them immediately.
 
 ```
 eval 3 "hello again" =$ =dino
