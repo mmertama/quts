@@ -35,4 +35,9 @@ LDIR= $$PWD/../../lib/$$OS/$$TYPEDIR
 message(Quts - get quts library from $$LDIR)
 LIBS += -L$$LDIR -lquts -lobjectfinder
 
+document.target = $$PWD/../document/quts_doc.md
+win32: document.commands = python.exe $$PWD/../tools/qutsmdgen.py $$PWD/.. quts_doc.h  $$PWD/../document/quts_doc.md
+else: document.commands = python $$PWD/../tools/qutsmdgen.py $$PWD/.. quts_doc.h  $$PWD/../document/quts_doc.md
 
+PRE_TARGETDEPS +=  $$PWD/../document/quts_doc.md
+QMAKE_EXTRA_TARGETS += document

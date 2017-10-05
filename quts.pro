@@ -24,6 +24,9 @@ quts.depends += lib
 audio.depends += lib
 graphics.depends += lib
 
+quts.depends = $$SUBDIRS
+quts.depends -= quts
+
 DISTFILES += \
     License.txt \
     $$PWD/test/scripts/twinkletwinkle.qts \
@@ -51,6 +54,12 @@ DISTFILES += \
     $$PWD/test/scripts/functions.qts \
     $$PWD/test/scripts/graphics.qts \
     $$PWD/test/scripts/watch.qts
+
+
+
+
+
+
 
 
 

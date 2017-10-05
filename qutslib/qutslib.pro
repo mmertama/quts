@@ -71,7 +71,8 @@ SOURCES +=  \
 
 
 DISTFILES += \
-    ../tools/qutsdocgen.py
+    ../tools/qutsdocgen.py \
+    ../tools/qutsmdgen.py
 
 LDIR= $$PWD/../../lib/$$OS/$$TYPEDIR
 LIBS += -L$$LDIR -lobjectfinder
