@@ -44,8 +44,8 @@ fun hi
 hi "you"
 ```
 
-### Graphcis
-Subsystems are dynamically loaded using <b>use</b> command. Subsystem functions are called with <b>.</b> notation. 
+### Graphics
+Subsystems are dynamically loaded using <b>use</b> command. Subsystem functions are called with <b>.</b> notation. <b>Graphics</b> subsystems have simple drawing primitives e.g. for drawing line. The subsystem creates its own window where graphics are drawn. 
 
 ```
 use graphics
@@ -102,6 +102,27 @@ lambda
 call $
 ```
 
+### Events
+<b>time</b> has also function to generate timed events. Here a function is pushed on stack, duplicated and given to <b>time.repeater</b> as a parameter. When <b>time.repeat</b> is called those repeaters will be called in every 100 and 1000ms (yet the timing is very unaccurate). The third parameter tells how many times the repeater is called. Last parateters is given to lambda functions.
+
+```
+var degree
+lambda
+    push degree
+    inc 1
+    push
+    pop degree
+    tick $ 300 $
+    ;;
+
+push
+
+time.repeater 100 $ maxInt "lightblue"
+time.repeater 1000 $ maxInt "red"
+
+# default is forever
+time.repeat 60000
+```
 
 
 ## Road to Quts
