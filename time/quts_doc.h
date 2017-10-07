@@ -34,7 +34,7 @@ const QHash<QString, QMap<QString, QVariant>> qutsDoc = {
 		{"definition", QVariant("")},
 		{"parameters", QVariant(QStringList({}))}, 
 		{"returnValue", QVariant("")},
-		{"comment", QVariant("TIME")}
+		{"comment", QVariant("")}
 	}}
 };
 }//namespace Quts

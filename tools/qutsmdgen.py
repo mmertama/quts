@@ -28,7 +28,7 @@ def unquote(n):
 
 def outPut(o):
     params =  toStringParam(o['parameters'])
-    writeTo("###\t" + o['name'].lower().capitalize())
+    writeTo("### " + o['name'].lower().capitalize())
     if len(o['definition']) > 0:
         writeTo("<code>" + o['definition'] + "</code>")
     writeTo("<b>Parameters:</b>\t" + (params if len(params) > 0 else 'None'))
@@ -67,8 +67,9 @@ for help in helps:
 
 objs.sort(key=lambda k: k['name'])
 objs.sort(key=lambda k: k['sys'])
-writeTo("<!--- Generated file, please do not edit -->")
-writeTo("")
+
+writeTo(r'[//]: # (Generated file, please do not edit)')
+
 
 writeTo ("# Quts API")
 
@@ -82,22 +83,22 @@ toLinkName = lambda oo : oo['sys'].lower() + oo['name'].lower()
 for o in objs:
     l =  o['name'].lower()
     if compareCore(o):
-        writeTo('[' + l.capitalize() + '][' + toLinkName(o) + ']')
+        writeTo('[' + l.capitalize() + '](#' + toLinkName(o) + ')')
     else:
-        writeTo('[' + o['sys'] + '.' + l.capitalize() + '][' + toLinkName(o) + ']')
+        writeTo('[' + o['sys'] + '.' + l.capitalize() + '](#' + toLinkName(o) + ')')
 
 for o in objs:
     if compareCore(o):
-        writeTo('[' + toLinkName(o) + ']:#' + toLinkName(o))
+        writeTo('<a name="' + toLinkName(o) + '"></a>')
         outPut(o)
 
 currentAPI = None
 for o in objs:
-    if currentAPI != o['sys']:
-        currentAPI = o['sys']
-        writeTo("##" + o['sys'].lower().capitalize())
     if not compareCore(o):
-        writeTo('[' + toLinkName(o) + ']:#' + toLinkName(o))
+        if currentAPI != o['sys']:
+            currentAPI = o['sys']
+            writeTo("## " + o['sys'].lower().capitalize())
+        writeTo('<a name="' + toLinkName(o) + '"></a>')
         outPut(o)
 
 

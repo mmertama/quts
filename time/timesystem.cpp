@@ -96,7 +96,7 @@ bool TimeSystem::delta(const QStringList& values) {
 }
 
 /**DOC
- * TIME
+ * S TIME
  * N repeater
  **/
 bool TimeSystem::repeater(const QStringList& values) {
@@ -128,7 +128,7 @@ bool TimeSystem::repeater(const QStringList& values) {
 }
 
 /**
-  * TIME
+  * S TIME
   * N repeat
 **/
 

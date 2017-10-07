@@ -1,894 +1,892 @@
+[//]: # (Generated file, please do not edit)  
 # Quts API  
-<!--Generated file, please do not edit--!>  
-  
 Quts core functions  
-[AUDIO.Beep][audiobeep]  
-[AUDIO.Wait][audiowait]  
-[Assert][coreassert]  
-[Breakpoints][corebreakpoints]  
-[Call][corecall]  
-[Commandspeed][corecommandspeed]  
-[Debug][coredebug]  
-[Else][coreelse]  
-[Error][coreerror]  
-[Eval][coreeval]  
-[For][corefor]  
-[Help][corehelp]  
-[If][coreif]  
-[Import][coreimport]  
-[Inc][coreinc]  
-[Let][corelet]  
-[Load][coreload]  
-[Maxint][coremaxint]  
-[Minint][coreminint]  
-[Not][corenot]  
-[Pop][corepop]  
-[Printprefix][coreprintprefix]  
-[Puke][corepuke]  
-[Push][corepush]  
-[Return][corereturn]  
-[Swap][coreswap]  
-[Test][coretest]  
-[Use][coreuse]  
-[Var][corevar]  
-[Void][corevoid]  
-[FLOAT.Acos][floatacos]  
-[FLOAT.Asin][floatasin]  
-[FLOAT.Assert][floatassert]  
-[FLOAT.Atan][floatatan]  
-[FLOAT.Atan2][floatatan2]  
-[FLOAT.Ceil][floatceil]  
-[FLOAT.Cos][floatcos]  
-[FLOAT.Div][floatdiv]  
-[FLOAT.Drop][floatdrop]  
-[FLOAT.Dup][floatdup]  
-[FLOAT.Equal][floatequal]  
-[FLOAT.Exp][floatexp]  
-[FLOAT.Floor][floatfloor]  
-[FLOAT.Lessthan][floatlessthan]  
-[FLOAT.Lessthanorequal][floatlessthanorequal]  
-[FLOAT.Ln][floatln]  
-[FLOAT.Morethan][floatmorethan]  
-[FLOAT.Morethanorequal][floatmorethanorequal]  
-[FLOAT.Mul][floatmul]  
-[FLOAT.Over][floatover]  
-[FLOAT.Pop][floatpop]  
-[FLOAT.Pow][floatpow]  
-[FLOAT.Push][floatpush]  
-[FLOAT.Rad][floatrad]  
-[FLOAT.Rad][floatrad]  
-[FLOAT.Sin][floatsin]  
-[FLOAT.Sqrt][floatsqrt]  
-[FLOAT.Subt][floatsubt]  
-[FLOAT.Subt][floatsubt]  
-[FLOAT.Sum][floatsum]  
-[FLOAT.Swap][floatswap]  
-[FLOAT.Tan][floattan]  
-[INT.And][intand]  
-[INT.Assert][intassert]  
-[INT.Div][intdiv]  
-[INT.Drop][intdrop]  
-[INT.Dup][intdup]  
-[INT.Equal][intequal]  
-[INT.Lessthan][intlessthan]  
-[INT.Lessthanorequal][intlessthanorequal]  
-[INT.Morethan][intmorethan]  
-[INT.Morethanorequal][intmorethanorequal]  
-[INT.Mul][intmul]  
-[INT.Not][intnot]  
-[INT.Or][intor]  
-[INT.Over][intover]  
-[INT.Pop][intpop]  
-[INT.Pow][intpow]  
-[INT.Push][intpush]  
-[INT.Remainder][intremainder]  
-[INT.Sum][intsum]  
-[INT.Swap][intswap]  
-[INT.Xor][intxor]  
-[LIST.Add][listadd]  
-[LIST.Iterate][listiterate]  
-[LIST.Len][listlen]  
-[LIST.List][listlist]  
-[QT.Child][qtchild]  
-[QT.Click][qtclick]  
-[QT.Find][qtfind]  
-[QT.Item][qtitem]  
-[QT.Parent][qtparent]  
-[QT.Qutssignal][qtqutssignal]  
-[QT.Signal][qtsignal]  
-[QT.Slot][qtslot]  
-[STORE.Container][storecontainer]  
-[STORE.Contains][storecontains]  
-[STORE.Read][storeread]  
-[STORE.Write][storewrite]  
-[STRING.Add][stringadd]  
-[STRING.Len][stringlen]  
-[STRING.List][stringlist]  
-[STRING.Match][stringmatch]  
-[STRING.Substr][stringsubstr]  
-[TIME.Delta][timedelta]  
-[TIME.Get][timeget]  
-[TIME.Repeater][timerepeater]  
-[TIME.Sleep][timesleep]  
-[coreassert]:#coreassert  
-###	Assert  
+[AUDIO.Beep](#audiobeep)  
+[AUDIO.Wait](#audiowait)  
+[Assert](#coreassert)  
+[Breakpoints](#corebreakpoints)  
+[Call](#corecall)  
+[Commandspeed](#corecommandspeed)  
+[Debug](#coredebug)  
+[Else](#coreelse)  
+[Error](#coreerror)  
+[Eval](#coreeval)  
+[For](#corefor)  
+[Help](#corehelp)  
+[If](#coreif)  
+[Import](#coreimport)  
+[Inc](#coreinc)  
+[Let](#corelet)  
+[Load](#coreload)  
+[Maxint](#coremaxint)  
+[Minint](#coreminint)  
+[Not](#corenot)  
+[Pop](#corepop)  
+[Printprefix](#coreprintprefix)  
+[Puke](#corepuke)  
+[Push](#corepush)  
+[Return](#corereturn)  
+[Swap](#coreswap)  
+[Test](#coretest)  
+[Use](#coreuse)  
+[Var](#corevar)  
+[Void](#corevoid)  
+[FLOAT.Acos](#floatacos)  
+[FLOAT.Asin](#floatasin)  
+[FLOAT.Assert](#floatassert)  
+[FLOAT.Atan](#floatatan)  
+[FLOAT.Atan2](#floatatan2)  
+[FLOAT.Ceil](#floatceil)  
+[FLOAT.Cos](#floatcos)  
+[FLOAT.Div](#floatdiv)  
+[FLOAT.Drop](#floatdrop)  
+[FLOAT.Dup](#floatdup)  
+[FLOAT.Equal](#floatequal)  
+[FLOAT.Exp](#floatexp)  
+[FLOAT.Floor](#floatfloor)  
+[FLOAT.Lessthan](#floatlessthan)  
+[FLOAT.Lessthanorequal](#floatlessthanorequal)  
+[FLOAT.Ln](#floatln)  
+[FLOAT.Morethan](#floatmorethan)  
+[FLOAT.Morethanorequal](#floatmorethanorequal)  
+[FLOAT.Mul](#floatmul)  
+[FLOAT.Over](#floatover)  
+[FLOAT.Pop](#floatpop)  
+[FLOAT.Pow](#floatpow)  
+[FLOAT.Push](#floatpush)  
+[FLOAT.Rad](#floatrad)  
+[FLOAT.Rad](#floatrad)  
+[FLOAT.Sin](#floatsin)  
+[FLOAT.Sqrt](#floatsqrt)  
+[FLOAT.Subt](#floatsubt)  
+[FLOAT.Subt](#floatsubt)  
+[FLOAT.Sum](#floatsum)  
+[FLOAT.Swap](#floatswap)  
+[FLOAT.Tan](#floattan)  
+[INT.And](#intand)  
+[INT.Assert](#intassert)  
+[INT.Div](#intdiv)  
+[INT.Drop](#intdrop)  
+[INT.Dup](#intdup)  
+[INT.Equal](#intequal)  
+[INT.Lessthan](#intlessthan)  
+[INT.Lessthanorequal](#intlessthanorequal)  
+[INT.Morethan](#intmorethan)  
+[INT.Morethanorequal](#intmorethanorequal)  
+[INT.Mul](#intmul)  
+[INT.Not](#intnot)  
+[INT.Or](#intor)  
+[INT.Over](#intover)  
+[INT.Pop](#intpop)  
+[INT.Pow](#intpow)  
+[INT.Push](#intpush)  
+[INT.Remainder](#intremainder)  
+[INT.Sum](#intsum)  
+[INT.Swap](#intswap)  
+[INT.Xor](#intxor)  
+[LIST.Add](#listadd)  
+[LIST.Iterate](#listiterate)  
+[LIST.Len](#listlen)  
+[LIST.List](#listlist)  
+[QT.Child](#qtchild)  
+[QT.Click](#qtclick)  
+[QT.Find](#qtfind)  
+[QT.Item](#qtitem)  
+[QT.Parent](#qtparent)  
+[QT.Qutssignal](#qtqutssignal)  
+[QT.Signal](#qtsignal)  
+[QT.Slot](#qtslot)  
+[STORE.Container](#storecontainer)  
+[STORE.Contains](#storecontains)  
+[STORE.Read](#storeread)  
+[STORE.Write](#storewrite)  
+[STRING.Add](#stringadd)  
+[STRING.Len](#stringlen)  
+[STRING.List](#stringlist)  
+[STRING.Match](#stringmatch)  
+[STRING.Substr](#stringsubstr)  
+[TIME.Delta](#timedelta)  
+[TIME.Get](#timeget)  
+[TIME.Repeater](#timerepeater)  
+[TIME.Sleep](#timesleep)  
+<a name="coreassert"></a>  
+### Assert  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[corebreakpoints]:#corebreakpoints  
-###	Breakpoints  
+<a name="corebreakpoints"></a>  
+### Breakpoints  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[corecall]:#corecall  
-###	Call  
+<a name="corecall"></a>  
+### Call  
 <code>name</code>  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Call subroutine, subroutines are sections starting with &  
 
   
-[corecommandspeed]:#corecommandspeed  
-###	Commandspeed  
+<a name="corecommandspeed"></a>  
+### Commandspeed  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Command calling speed  
 
   
-[coredebug]:#coredebug  
-###	Debug  
+<a name="coredebug"></a>  
+### Debug  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Print debug info  
 
   
-[coreelse]:#coreelse  
-###	Else  
+<a name="coreelse"></a>  
+### Else  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[coreerror]:#coreerror  
-###	Error  
+<a name="coreerror"></a>  
+### Error  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[coreeval]:#coreeval  
-###	Eval  
+<a name="coreeval"></a>  
+### Eval  
 <code><value> <param and return value list></code>  
 <b>Parameters:</b>	"value is how many lines from stack are consumed as command lines, a list or a string"  
 <b>Return:</b>	None  
 Executes parameters as commads  
 
   
-[corefor]:#corefor  
-###	For  
+<a name="corefor"></a>  
+### For  
 <code><count> <index></code>  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[corehelp]:#corehelp  
-###	Help  
+<a name="corehelp"></a>  
+### Help  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[coreif]:#coreif  
-###	If  
+<a name="coreif"></a>  
+### If  
 <code>condition</code>  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Createas a conditional scope  
 
   
-[coreimport]:#coreimport  
-###	Import  
+<a name="coreimport"></a>  
+### Import  
 <code>filename <name></code>  
 <b>Parameters:</b>	"filename that can be used to load script.","name that is used to refer, if not given, a basename of filename"  
 <b>Return:</b>	None  
 Load another script into this script so they share stack and registers. Another script and its subroutines can then be called using CALL  
 
   
-[coreinc]:#coreinc  
-###	Inc  
+<a name="coreinc"></a>  
+### Inc  
 <code><values></code>  
 <b>Parameters:</b>	None  
 <b>Return:</b>	result  
 increment by values  
 
   
-[corelet]:#corelet  
-###	Let  
+<a name="corelet"></a>  
+### Let  
 <code>variableName <value></code>  
 <b>Parameters:</b>	"variable name","value, if not set a variable is destroyed"  
 <b>Return:</b>	None  
 Write value to variables  
 
   
-[coreload]:#coreload  
-###	Load  
+<a name="coreload"></a>  
+### Load  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 as import but not called before the call  
 
   
-[coremaxint]:#coremaxint  
-###	Maxint  
+<a name="coremaxint"></a>  
+### Maxint  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Maximum value  
 
   
-[coreminint]:#coreminint  
-###	Minint  
+<a name="coreminint"></a>  
+### Minint  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Minimimum value  
 
   
-[corenot]:#corenot  
-###	Not  
+<a name="corenot"></a>  
+### Not  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[corepop]:#corepop  
-###	Pop  
+<a name="corepop"></a>  
+### Pop  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[coreprintprefix]:#coreprintprefix  
-###	Printprefix  
+<a name="coreprintprefix"></a>  
+### Printprefix  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 prefix for each print command  
 
   
-[corepuke]:#corepuke  
-###	Puke  
+<a name="corepuke"></a>  
+### Puke  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 print out internals  
 
   
-[corepush]:#corepush  
-###	Push  
+<a name="corepush"></a>  
+### Push  
 <code><values></code>  
 <b>Parameters:</b>	"if empty current value (if exists) is copied on stack."  
 <b>Return:</b>	Pushed values so that first value is on top of stack.  
 Copy values on top of stack  
 
   
-[corereturn]:#corereturn  
-###	Return  
+<a name="corereturn"></a>  
+### Return  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[coreswap]:#coreswap  
-###	Swap  
+<a name="coreswap"></a>  
+### Swap  
 <b>Parameters:</b>	"nth value, if not given swap second on top"  
 <b>Return:</b>	None  
 Bring nth value on top stack <num>  
 
   
-[coretest]:#coretest  
-###	Test  
+<a name="coretest"></a>  
+### Test  
 <code><valueList></code>  
 <b>Parameters:</b>	"value list, for each value one value is popped from stack and compared, if no values are given it if stack is empty"  
 <b>Return:</b>	True if all compares match, otherwise false  
 Compare values  
 
   
-[coreuse]:#coreuse  
-###	Use  
+<a name="coreuse"></a>  
+### Use  
 <code>name</code>  
 <b>Parameters:</b>	"name of subsystem"  
 <b>Return:</b>	None  
 import subsystem  
 
   
-[corevar]:#corevar  
-###	Var  
+<a name="corevar"></a>  
+### Var  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[corevoid]:#corevoid  
-###	Void  
+<a name="corevoid"></a>  
+### Void  
 <code><value></code>  
 <b>Parameters:</b>	"value if not available is read from stack set amount of values read from stack."  
 <b>Return:</b>	None  
 Empty items from stack  
 
   
-##Audio  
-[audiobeep]:#audiobeep  
-###	Beep  
+## Audio  
+<a name="audiobeep"></a>  
+### Beep  
 <code>notes <duration> <octave></code>  
 <b>Parameters:</b>	"notes := notes note; note = [CDEFGAB][#b]?\\d* and d 1, 2, 4, 8, or 16 (default 4)","duration of each note in ms","octave where notes are played"  
 <b>Return:</b>	None  
 Play Notes  
 
   
-[audiowait]:#audiowait  
-###	Wait  
+<a name="audiowait"></a>  
+### Wait  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Wait play to complete  
 
   
-##Core  
-##Float  
-[floatacos]:#floatacos  
-###	Acos  
+## Float  
+<a name="floatacos"></a>  
+### Acos  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatasin]:#floatasin  
-###	Asin  
+<a name="floatasin"></a>  
+### Asin  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatassert]:#floatassert  
-###	Assert  
+<a name="floatassert"></a>  
+### Assert  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Error if two top values are non equal.  
 
   
-[floatatan]:#floatatan  
-###	Atan  
+<a name="floatatan"></a>  
+### Atan  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatatan2]:#floatatan2  
-###	Atan2  
+<a name="floatatan2"></a>  
+### Atan2  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatceil]:#floatceil  
-###	Ceil  
+<a name="floatceil"></a>  
+### Ceil  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatcos]:#floatcos  
-###	Cos  
+<a name="floatcos"></a>  
+### Cos  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatdiv]:#floatdiv  
-###	Div  
+<a name="floatdiv"></a>  
+### Div  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatdrop]:#floatdrop  
-###	Drop  
+<a name="floatdrop"></a>  
+### Drop  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 remove topmost value  
 
   
-[floatdup]:#floatdup  
-###	Dup  
+<a name="floatdup"></a>  
+### Dup  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 duplicate value  
 
   
-[floatequal]:#floatequal  
-###	Equal  
+<a name="floatequal"></a>  
+### Equal  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatexp]:#floatexp  
-###	Exp  
+<a name="floatexp"></a>  
+### Exp  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatfloor]:#floatfloor  
-###	Floor  
+<a name="floatfloor"></a>  
+### Floor  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatlessthan]:#floatlessthan  
-###	Lessthan  
+<a name="floatlessthan"></a>  
+### Lessthan  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatlessthanorequal]:#floatlessthanorequal  
-###	Lessthanorequal  
+<a name="floatlessthanorequal"></a>  
+### Lessthanorequal  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatln]:#floatln  
-###	Ln  
+<a name="floatln"></a>  
+### Ln  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatmorethan]:#floatmorethan  
-###	Morethan  
+<a name="floatmorethan"></a>  
+### Morethan  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatmorethanorequal]:#floatmorethanorequal  
-###	Morethanorequal  
+<a name="floatmorethanorequal"></a>  
+### Morethanorequal  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatmul]:#floatmul  
-###	Mul  
+<a name="floatmul"></a>  
+### Mul  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatover]:#floatover  
-###	Over  
+<a name="floatover"></a>  
+### Over  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 duplicate value under top on top  
 
   
-[floatpop]:#floatpop  
-###	Pop  
+<a name="floatpop"></a>  
+### Pop  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 pop a value from math stack on application stack  
 
   
-[floatpow]:#floatpow  
-###	Pow  
+<a name="floatpow"></a>  
+### Pow  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatpush]:#floatpush  
-###	Push  
+<a name="floatpush"></a>  
+### Push  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 pop a value from application stack into corresponding math stack.  
 
   
-[floatrad]:#floatrad  
-###	Rad  
+<a name="floatrad"></a>  
+### Rad  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatrad]:#floatrad  
-###	Rad  
+<a name="floatrad"></a>  
+### Rad  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatsin]:#floatsin  
-###	Sin  
+<a name="floatsin"></a>  
+### Sin  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatsqrt]:#floatsqrt  
-###	Sqrt  
+<a name="floatsqrt"></a>  
+### Sqrt  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Squareroot  
 
   
-[floatsubt]:#floatsubt  
-###	Subt  
+<a name="floatsubt"></a>  
+### Subt  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Subtract  
 
   
-[floatsubt]:#floatsubt  
-###	Subt  
+<a name="floatsubt"></a>  
+### Subt  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Subtract  
 
   
-[floatsum]:#floatsum  
-###	Sum  
+<a name="floatsum"></a>  
+### Sum  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floatswap]:#floatswap  
-###	Swap  
+<a name="floatswap"></a>  
+### Swap  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[floattan]:#floattan  
-###	Tan  
+<a name="floattan"></a>  
+### Tan  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-##Int  
-[intand]:#intand  
-###	And  
+## Int  
+<a name="intand"></a>  
+### And  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Bitwise and  
 
   
-[intassert]:#intassert  
-###	Assert  
+<a name="intassert"></a>  
+### Assert  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Error if two top values are non equal.  
 
   
-[intdiv]:#intdiv  
-###	Div  
+<a name="intdiv"></a>  
+### Div  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[intdrop]:#intdrop  
-###	Drop  
+<a name="intdrop"></a>  
+### Drop  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 remove topmost value  
 
   
-[intdup]:#intdup  
-###	Dup  
+<a name="intdup"></a>  
+### Dup  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 duplicate value  
 
   
-[intequal]:#intequal  
-###	Equal  
+<a name="intequal"></a>  
+### Equal  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[intlessthan]:#intlessthan  
-###	Lessthan  
+<a name="intlessthan"></a>  
+### Lessthan  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[intlessthanorequal]:#intlessthanorequal  
-###	Lessthanorequal  
+<a name="intlessthanorequal"></a>  
+### Lessthanorequal  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[intmorethan]:#intmorethan  
-###	Morethan  
+<a name="intmorethan"></a>  
+### Morethan  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[intmorethanorequal]:#intmorethanorequal  
-###	Morethanorequal  
+<a name="intmorethanorequal"></a>  
+### Morethanorequal  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[intmul]:#intmul  
-###	Mul  
+<a name="intmul"></a>  
+### Mul  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[intnot]:#intnot  
-###	Not  
+<a name="intnot"></a>  
+### Not  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[intor]:#intor  
-###	Or  
+<a name="intor"></a>  
+### Or  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Bitwise or  
 
   
-[intover]:#intover  
-###	Over  
+<a name="intover"></a>  
+### Over  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 duplicate value under top on top  
 
   
-[intpop]:#intpop  
-###	Pop  
+<a name="intpop"></a>  
+### Pop  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 pop a value from math stack on application stack  
 
   
-[intpow]:#intpow  
-###	Pow  
+<a name="intpow"></a>  
+### Pow  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[intpush]:#intpush  
-###	Push  
+<a name="intpush"></a>  
+### Push  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 pop a value from application stack into corresponding math stack.  
 
   
-[intremainder]:#intremainder  
-###	Remainder  
+<a name="intremainder"></a>  
+### Remainder  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[intsum]:#intsum  
-###	Sum  
+<a name="intsum"></a>  
+### Sum  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[intswap]:#intswap  
-###	Swap  
+<a name="intswap"></a>  
+### Swap  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[intxor]:#intxor  
-###	Xor  
+<a name="intxor"></a>  
+### Xor  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Bitwise xor  
 
   
-##List  
-[listadd]:#listadd  
-###	Add  
+## List  
+<a name="listadd"></a>  
+### Add  
 <b>Parameters:</b>	None  
 <b>Return:</b>	result  
 Add items  
 
   
-[listiterate]:#listiterate  
-###	Iterate  
+<a name="listiterate"></a>  
+### Iterate  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[listlen]:#listlen  
-###	Len  
+<a name="listlen"></a>  
+### Len  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Length of list on stack  
 
   
-[listlist]:#listlist  
-###	List  
+<a name="listlist"></a>  
+### List  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-##Qt  
-[qtchild]:#qtchild  
-###	Child  
+## Qt  
+<a name="qtchild"></a>  
+### Child  
 <code><index> <list>, where list := <list item>, item := property regexp</code>  
 <b>Parameters:</b>	"index of item in case of multiple matches. Defaults to the first.","property name of item","regexp that match to to value of property."  
 <b>Return:</b>	number of items in match.  
 Set Focus to current item child or item its property refers to See FOCUS and PARENT  
 
   
-[qtclick]:#qtclick  
-###	Click  
+<a name="qtclick"></a>  
+### Click  
 <code><x-offset y-offset></code>  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Set mouse event to middle of focused UI item, offset to that point are optional.  
 
   
-[qtfind]:#qtfind  
-###	Find  
+<a name="qtfind"></a>  
+### Find  
 <code>name <index> <list>, where list := <list item>, item := property regexp</code>  
 <b>Parameters:</b>	"index of item in case of multiple matches. Defaults to the first.","property name of item","regexp that match to to value of property."  
 <b>Return:</b>	number of items in match.  
 change active \'item\', if there are multiple items, use index, defaults to 0. There may be list of property names and regexp values given used for filtering the results. Return amount of hits on top of stack. Does not change UI focus (use CLICK for that). see CHILD, PARENT, SIGNAL and CLICK.  
 
   
-[qtitem]:#qtitem  
-###	Item  
+<a name="qtitem"></a>  
+### Item  
 <code>property <index> <list>, where list := <list item>, item := property regexp</code>  
 <b>Parameters:</b>	"property name","index if property is a list, hash or map","list of property regep pairs, see FOCUS and CHILD"  
 <b>Return:</b>	number of matches  
 Set Focus to item that is currently selected item property.  
 
   
-[qtparent]:#qtparent  
-###	Parent  
+<a name="qtparent"></a>  
+### Parent  
 <b>Parameters:</b>	None  
 <b>Return:</b>	Boolean due found.  
 Set Focus to current item parent.  
 
   
-[qtqutssignal]:#qtqutssignal  
-###	Qutssignal  
+<a name="qtqutssignal"></a>  
+### Qutssignal  
 <code>signal_name <parameter_list></code>  
 <b>Parameters:</b>	"sign_name is string to idententify this signal in the slot, followed by parameters"  
 <b>Return:</b>	None  
 Emits a QutsAPI signal \"qutsSignal\"  
 
   
-[qtsignal]:#qtsignal  
-###	Signal  
+<a name="qtsignal"></a>  
+### Signal  
 <code>signal_name <parameter_list></code>  
 <b>Parameters:</b>	"signal_name (without parameters or brackets)"  
 <b>Return:</b>	None  
 Emit a signal to focused object  
 
   
-[qtslot]:#qtslot  
-###	Slot  
+<a name="qtslot"></a>  
+### Slot  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-##Store  
-[storecontainer]:#storecontainer  
-###	Container  
+## Store  
+<a name="storecontainer"></a>  
+### Container  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[storecontains]:#storecontains  
-###	Contains  
+<a name="storecontains"></a>  
+### Contains  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[storeread]:#storeread  
-###	Read  
+<a name="storeread"></a>  
+### Read  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[storewrite]:#storewrite  
-###	Write  
+<a name="storewrite"></a>  
+### Write  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-##String  
-[stringadd]:#stringadd  
-###	Add  
+## String  
+<a name="stringadd"></a>  
+### Add  
 <b>Parameters:</b>	None  
 <b>Return:</b>	result  
 concanate items  
 
   
-[stringlen]:#stringlen  
-###	Len  
+<a name="stringlen"></a>  
+### Len  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Length of string on stack  
 
   
-[stringlist]:#stringlist  
-###	List  
+<a name="stringlist"></a>  
+### List  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[stringmatch]:#stringmatch  
-###	Match  
+<a name="stringmatch"></a>  
+### Match  
 <code>regexp <string></code>  
 <b>Parameters:</b>	"value to match, if omitted, a value is taken from stack"  
 <b>Return:</b>	true or false  
 a regular expression  
 
   
-[stringsubstr]:#stringsubstr  
-###	Substr  
+<a name="stringsubstr"></a>  
+### Substr  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Get a substring   
 
   
-##Time  
-[timedelta]:#timedelta  
-###	Delta  
+## Time  
+<a name="timedelta"></a>  
+### Delta  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[timeget]:#timeget  
-###	Get  
+<a name="timeget"></a>  
+### Get  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
-[timerepeater]:#timerepeater  
-###	Repeater  
+<a name="timerepeater"></a>  
+### Repeater  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
-TIME  
+Documentation missing  
 
   
-[timesleep]:#timesleep  
-###	Sleep  
+<a name="timesleep"></a>  
+### Sleep  
 <code>number</code>  
 <b>Parameters:</b>	"milliseconds to sleep"  
 <b>Return:</b>	None  
