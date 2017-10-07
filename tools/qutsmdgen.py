@@ -67,13 +67,14 @@ for help in helps:
 
 objs.sort(key=lambda k: k['name'])
 objs.sort(key=lambda k: k['sys'])
+writeTo("<!--- Generated file, please do not edit -->")
+writeTo("")
 
 writeTo ("# Quts API")
 
 compareCore = lambda oo: re.match('CORE', oo['sys'], re.IGNORECASE)
 
-writeTo("<!--Generated file, please do not edit--!>")
-writeTo("")
+
 writeTo("Quts core functions")
 
 toLinkName = lambda oo : oo['sys'].lower() + oo['name'].lower()
