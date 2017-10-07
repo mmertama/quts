@@ -12,24 +12,28 @@ print ("Generating" + target)
 writeFile = open(target, 'w')
 
 def writeTo(line):
-    writeFile.write(line + "\n")
-
+    writeFile.write(line + "  \n")
 
 def findField(line, name):
     md = re.search(r'\{\"' + name + '\",\s*QVariant\((.*)\)\}', line)
     return md.group(1) if md else None
 
 def toStringParam(p):
-    m = re.match(r'QStringList\(\{(.*)\}\)', p)
-    return m.group(1)
+    md = re.match(r'QStringList\(\{(.*)\}\)', p)
+    return md.group(1) if md else p
 
+def unquote(n):
+    md = re.match(r'\"(.*)\"$', n)
+    return md.group(1) if md  else n
 
 def outPut(o):
+    params =  toStringParam(o['parameters'])
     writeTo("###\t" + o['name'].lower().capitalize())
-    writeTo("<code>" + o['definition'] + "</code>")
-    writeTo("Parameters:\t" + toStringParam(o['parameters']))
-    writeTo("Return:\t" + o['returnValue'] if len(o['returnValue']) > 0 else 'None')
-    writeTo("Comments:\t" + o['comment'] if len(o['comment']) > 0 else 'Not available')
+    if len(o['definition']) > 0:
+        writeTo("<code>" + o['definition'] + "</code>")
+    writeTo("<b>Parameters:</b>\t" + (params if len(params) > 0 else 'None'))
+    writeTo("<b>Return:</b>\t" + (o['returnValue'] if len(o['returnValue']) > 0 else 'None'))
+    writeTo(o['comment'] if len(o['comment']) > 0 else 'Documentation missing')
     writeTo ("\n")
 
 
@@ -48,7 +52,7 @@ for help in helps:
             for k in obj:
                 md = findField(line, k)
                 if md:
-                    obj[k] = md
+                    obj[k] = unquote(md)
             name = re.search(r'\{\"(.+)/(.+)\",\s*\{', line)
             if name:
                 if 'name' in obj:
@@ -66,16 +70,31 @@ objs.sort(key=lambda k: k['sys'])
 
 writeTo ("# Quts API")
 
+compareCore = lambda oo: re.match('CORE', oo['sys'], re.IGNORECASE)
+
+writeTo("<!--Generated file, please do not edit!-->")
+writeTo("Quts core functions")
+
+toLinkName = lambda oo : oo['sys'].lower() + oo['name'].lower()
+
 for o in objs:
-    if o['sys'] == 'CORE':
+    l =  o['name'].lower()
+    if compareCore(o):
+        writeTo('[' + l.capitalize() + '][' + toLinkName(o) + ']')
+    else:
+        writeTo('[' + o['sys'] + '.' + l.capitalize() + '][' + toLinkName(o) + ']')
+
+for o in objs:
+    if compareCore(o):
         outPut(o)
 
 currentAPI = None
 for o in objs:
+    writeTo('[' + toLinkName(o) + ']:#' + toLinkName(o))
     if currentAPI != o['sys']:
         currentAPI = o['sys']
         writeTo("##" + o['sys'].lower().capitalize())
-    if o['sys'] != 'CORE':
+    if not compareCore(o):
         outPut(o)
 
 

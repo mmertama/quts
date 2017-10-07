@@ -1,10 +1,10 @@
 # Quts
 
 ## Introduction
-Quts is a programming language for several purposes, but Quts is not a general purpose programming language. Its design targets has been changed over the time and therefore its nature may be best reveal by its history (please see later <Road to Quts>). The language
+Quts is a programming language for several purposes, but Quts is not a general purpose programming language. Quts meant to be simple language for writing Qt tests and having fun via writing small programs. Its design targets has been changed over the time and therefore its nature may be best reveal by its history (please see later [Road to Quts][roadtoquts]). 
 
 ## Features
-Loosely stack based imperative language with some functional progeramming twists. The basic syntax is command + list of parameters. Command is case insensitive and parameters are separated y spaces. The core language consists of commands for basic constrol control flow and reserved words, all the other functionality is defined in subsystems. For example strings and math are in their own subsystems. 
+Loosely stack based imperative language with some functional progeramming twists. The basic syntax is command + list of parameters. Command is case insensitive and parameters are separated y spaces. The core language consists of commands for basic constrol control flow and reserved words, all the other functionality is defined in subsystems. For example strings and math are in their own subsystems. The Quts comes with QutsConsole application that helps debugging applications by provingding stack, register views and using breakpoints. 
 
 ## Install
 Quts should be installed for every platfowm Qt 5.9 is available, and it is verified on Windows (tested windows 10), Linux (tested Ubuntu 16.04) and OSX (tested Sierra).
@@ -22,6 +22,8 @@ Command line interface to run quts files.
 ### Integrated (for testing)
 For using Quts for automated testing you shall embed qutslib using in your application, the API is defined in quts.h header. When you do that in main function the QT subsystem will get access to all QWidgets and QML items in the application. 
 
+### Documentation
+[Quts API documentation]:document/quts.doc.md
 
 ## Example applications
 Here are basic features explained by example.
@@ -124,7 +126,7 @@ time.repeater 1000 $ maxInt "red"
 time.repeat 60000
 ```
 
-
+[roadtoquts]:#roadtoquts
 ## Road to Quts
 
 Basically its story can be dated somewhere back to year 2003 and Doom. I implemented a copy protection system for S60 C2Doom as an interpreter to obfuscate the registration code. That language purpose was to be obscure “write only” language. It featured every command was a single character and program was written as single string. Program was loaded and executed on single 8-bit stack. Therefore program get changed on every step. Furthermore It had only single character hexadecimal numers as command, i.e. ‘9’ was a command that writes int nine into stack and e.g. something like “99*1+!” and writes “82” on console (assuming ‘!’ is a print command). However it was a complete programming language implementing conditional branching and label style jumping.

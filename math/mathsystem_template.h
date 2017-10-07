@@ -200,7 +200,13 @@ void Mathsystem<T>::over() {
 }
 /**DOC
 * N subt
-* S INT, FLOAT
+* S FLOAT
+* Subtract
+**/
+/**DOC
+* N subt
+* S FLOAT
+* Subtract
 **/
 template<typename T>
 void Mathsystem<T>::subt() {

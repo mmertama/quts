@@ -198,11 +198,17 @@ const QHash<QString, QMap<QString, QVariant>> qutsDoc = {
 		{"returnValue", QVariant("")},
 		{"comment", QVariant("duplicate value under top on top")}
 	}},
-	{"INT, FLOAT/SUBT", {
+	{"FLOAT/SUBT", {
 		{"definition", QVariant("")},
 		{"parameters", QVariant(QStringList({}))}, 
 		{"returnValue", QVariant("")},
-		{"comment", QVariant("")}
+		{"comment", QVariant("Subtract")}
+	}},
+	{"FLOAT/SUBT", {
+		{"definition", QVariant("")},
+		{"parameters", QVariant(QStringList({}))}, 
+		{"returnValue", QVariant("")},
+		{"comment", QVariant("Subtract")}
 	}},
 	{"INT/MUL", {
 		{"definition", QVariant("")},
