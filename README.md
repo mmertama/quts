@@ -23,7 +23,7 @@ Command line interface to run quts files.
 For using Quts for automated testing you shall embed qutslib using in your application, the API is defined in quts.h header. When you do that in main function the QT subsystem will get access to all QWidgets and QML items in the application. 
 
 ### Documentation
-[Quts API documentation](document/quts.doc.md title="Quts Documentation")
+[Quts API documentation](document/quts.doc.md)
 
 ## Example applications
 Here are basic features explained by example.
