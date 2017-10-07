@@ -72,7 +72,8 @@ writeTo ("# Quts API")
 
 compareCore = lambda oo: re.match('CORE', oo['sys'], re.IGNORECASE)
 
-writeTo("<!--Generated file, please do not edit!-->")
+writeTo("<!--Generated file, please do not edit--!>")
+writeTo("")
 writeTo("Quts core functions")
 
 toLinkName = lambda oo : oo['sys'].lower() + oo['name'].lower()
@@ -86,15 +87,16 @@ for o in objs:
 
 for o in objs:
     if compareCore(o):
+        writeTo('[' + toLinkName(o) + ']:#' + toLinkName(o))
         outPut(o)
 
 currentAPI = None
 for o in objs:
-    writeTo('[' + toLinkName(o) + ']:#' + toLinkName(o))
     if currentAPI != o['sys']:
         currentAPI = o['sys']
         writeTo("##" + o['sys'].lower().capitalize())
     if not compareCore(o):
+        writeTo('[' + toLinkName(o) + ']:#' + toLinkName(o))
         outPut(o)
 
 

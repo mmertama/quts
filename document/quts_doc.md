@@ -1,5 +1,6 @@
 # Quts API  
-<!--Generated file, please do not edit!-->  
+<!--Generated file, please do not edit--!>  
+  
 Quts core functions  
 [AUDIO.Beep][audiobeep]  
 [AUDIO.Wait][audiowait]  
@@ -109,18 +110,21 @@ Quts core functions
 [TIME.Get][timeget]  
 [TIME.Repeater][timerepeater]  
 [TIME.Sleep][timesleep]  
+[coreassert]:#coreassert  
 ###	Assert  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
+[corebreakpoints]:#corebreakpoints  
 ###	Breakpoints  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
+[corecall]:#corecall  
 ###	Call  
 <code>name</code>  
 <b>Parameters:</b>	None  
@@ -128,30 +132,35 @@ Documentation missing
 Call subroutine, subroutines are sections starting with &  
 
   
+[corecommandspeed]:#corecommandspeed  
 ###	Commandspeed  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Command calling speed  
 
   
+[coredebug]:#coredebug  
 ###	Debug  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Print debug info  
 
   
+[coreelse]:#coreelse  
 ###	Else  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
+[coreerror]:#coreerror  
 ###	Error  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
+[coreeval]:#coreeval  
 ###	Eval  
 <code><value> <param and return value list></code>  
 <b>Parameters:</b>	"value is how many lines from stack are consumed as command lines, a list or a string"  
@@ -159,6 +168,7 @@ Documentation missing
 Executes parameters as commads  
 
   
+[corefor]:#corefor  
 ###	For  
 <code><count> <index></code>  
 <b>Parameters:</b>	None  
@@ -166,12 +176,14 @@ Executes parameters as commads
 Documentation missing  
 
   
+[corehelp]:#corehelp  
 ###	Help  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
+[coreif]:#coreif  
 ###	If  
 <code>condition</code>  
 <b>Parameters:</b>	None  
@@ -179,6 +191,7 @@ Documentation missing
 Createas a conditional scope  
 
   
+[coreimport]:#coreimport  
 ###	Import  
 <code>filename <name></code>  
 <b>Parameters:</b>	"filename that can be used to load script.","name that is used to refer, if not given, a basename of filename"  
@@ -186,6 +199,7 @@ Createas a conditional scope
 Load another script into this script so they share stack and registers. Another script and its subroutines can then be called using CALL  
 
   
+[coreinc]:#coreinc  
 ###	Inc  
 <code><values></code>  
 <b>Parameters:</b>	None  
@@ -193,6 +207,7 @@ Load another script into this script so they share stack and registers. Another 
 increment by values  
 
   
+[corelet]:#corelet  
 ###	Let  
 <code>variableName <value></code>  
 <b>Parameters:</b>	"variable name","value, if not set a variable is destroyed"  
@@ -200,48 +215,56 @@ increment by values
 Write value to variables  
 
   
+[coreload]:#coreload  
 ###	Load  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 as import but not called before the call  
 
   
+[coremaxint]:#coremaxint  
 ###	Maxint  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Maximum value  
 
   
+[coreminint]:#coreminint  
 ###	Minint  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Minimimum value  
 
   
+[corenot]:#corenot  
 ###	Not  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
+[corepop]:#corepop  
 ###	Pop  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
+[coreprintprefix]:#coreprintprefix  
 ###	Printprefix  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 prefix for each print command  
 
   
+[corepuke]:#corepuke  
 ###	Puke  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 print out internals  
 
   
+[corepush]:#corepush  
 ###	Push  
 <code><values></code>  
 <b>Parameters:</b>	"if empty current value (if exists) is copied on stack."  
@@ -249,18 +272,21 @@ print out internals
 Copy values on top of stack  
 
   
+[corereturn]:#corereturn  
 ###	Return  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
+[coreswap]:#coreswap  
 ###	Swap  
 <b>Parameters:</b>	"nth value, if not given swap second on top"  
 <b>Return:</b>	None  
 Bring nth value on top stack <num>  
 
   
+[coretest]:#coretest  
 ###	Test  
 <code><valueList></code>  
 <b>Parameters:</b>	"value list, for each value one value is popped from stack and compared, if no values are given it if stack is empty"  
@@ -268,6 +294,7 @@ Bring nth value on top stack <num>
 Compare values  
 
   
+[coreuse]:#coreuse  
 ###	Use  
 <code>name</code>  
 <b>Parameters:</b>	"name of subsystem"  
@@ -275,12 +302,14 @@ Compare values
 import subsystem  
 
   
+[corevar]:#corevar  
 ###	Var  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
 Documentation missing  
 
   
+[corevoid]:#corevoid  
 ###	Void  
 <code><value></code>  
 <b>Parameters:</b>	"value if not available is read from stack set amount of values read from stack."  
@@ -288,8 +317,8 @@ Documentation missing
 Empty items from stack  
 
   
-[audiobeep]:#audiobeep  
 ##Audio  
+[audiobeep]:#audiobeep  
 ###	Beep  
 <code>notes <duration> <octave></code>  
 <b>Parameters:</b>	"notes := notes note; note = [CDEFGAB][#b]?\\d* and d 1, 2, 4, 8, or 16 (default 4)","duration of each note in ms","octave where notes are played"  
@@ -304,37 +333,9 @@ Play Notes
 Wait play to complete  
 
   
-[coreassert]:#coreassert  
 ##Core  
-[corebreakpoints]:#corebreakpoints  
-[corecall]:#corecall  
-[corecommandspeed]:#corecommandspeed  
-[coredebug]:#coredebug  
-[coreelse]:#coreelse  
-[coreerror]:#coreerror  
-[coreeval]:#coreeval  
-[corefor]:#corefor  
-[corehelp]:#corehelp  
-[coreif]:#coreif  
-[coreimport]:#coreimport  
-[coreinc]:#coreinc  
-[corelet]:#corelet  
-[coreload]:#coreload  
-[coremaxint]:#coremaxint  
-[coreminint]:#coreminint  
-[corenot]:#corenot  
-[corepop]:#corepop  
-[coreprintprefix]:#coreprintprefix  
-[corepuke]:#corepuke  
-[corepush]:#corepush  
-[corereturn]:#corereturn  
-[coreswap]:#coreswap  
-[coretest]:#coretest  
-[coreuse]:#coreuse  
-[corevar]:#corevar  
-[corevoid]:#corevoid  
-[floatacos]:#floatacos  
 ##Float  
+[floatacos]:#floatacos  
 ###	Acos  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
@@ -558,8 +559,8 @@ Documentation missing
 Documentation missing  
 
   
-[intand]:#intand  
 ##Int  
+[intand]:#intand  
 ###	And  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
@@ -706,8 +707,8 @@ Documentation missing
 Bitwise xor  
 
   
-[listadd]:#listadd  
 ##List  
+[listadd]:#listadd  
 ###	Add  
 <b>Parameters:</b>	None  
 <b>Return:</b>	result  
@@ -735,8 +736,8 @@ Length of list on stack
 Documentation missing  
 
   
-[qtchild]:#qtchild  
 ##Qt  
+[qtchild]:#qtchild  
 ###	Child  
 <code><index> <list>, where list := <list item>, item := property regexp</code>  
 <b>Parameters:</b>	"index of item in case of multiple matches. Defaults to the first.","property name of item","regexp that match to to value of property."  
@@ -798,8 +799,8 @@ Emit a signal to focused object
 Documentation missing  
 
   
-[storecontainer]:#storecontainer  
 ##Store  
+[storecontainer]:#storecontainer  
 ###	Container  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
@@ -827,8 +828,8 @@ Documentation missing
 Documentation missing  
 
   
-[stringadd]:#stringadd  
 ##String  
+[stringadd]:#stringadd  
 ###	Add  
 <b>Parameters:</b>	None  
 <b>Return:</b>	result  
@@ -864,8 +865,8 @@ a regular expression
 Get a substring   
 
   
-[timedelta]:#timedelta  
 ##Time  
+[timedelta]:#timedelta  
 ###	Delta  
 <b>Parameters:</b>	None  
 <b>Return:</b>	None  
