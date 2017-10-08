@@ -553,12 +553,12 @@ bool QutsAPIPrivate::execute() {
         Q_ASSERT(scope.type() == Scope::CALL);
         if(!nextIndex.isValid()) {
             if(m_scopes.length() == 1) { //exit
-                m_scopes.pop();
+                m_scopes.pop().cleanup();
                 Q_ASSERT(m_scopes.isEmpty());
                 return false;
             } else if(scope.cleanup()) {
                 Q_ASSERT(m_scopes.length() > 0);
-                m_scopes.pop();
+                m_scopes.pop().cleanup();
                 Q_ASSERT(m_scopes.isEmpty());
                 return false;
             } else {
@@ -651,7 +651,7 @@ bool QutsAPIPrivate::nop(const QStringList& value) {
 void QutsAPIPrivate::quit() {
     m_running = false;
     while(m_scopes.length() > 1) {
-        m_scopes.pop();
+        m_scopes.pop().cleanup();
     }
     Q_ASSERT(!m_scopes.isEmpty());
     _return(QStringList());
@@ -940,19 +940,19 @@ bool QutsAPIPrivate::initValues(std::function<void()> cleanup) {
         for(auto ss : m_subSystems) {
             if(ss->isActive()) {
                 hasActives = true;
-                QObject::connect(ss.data(), &Subsystem::end, [this, currentScript, q, cleanup]() {
+                QObject::connect(ss.data(), &Subsystem::end, [this, currentScript, q]() {
                     for(auto ss : m_subSystems) {
                         if(ss->isActive()) {
                             return false;
                         }
                     }
-                    if(cleanup != nullptr) {
-                        cleanup();
-                    }
                     emit q->end(currentScript);
                     return true;
                 });
             }
+        }
+        if(cleanup != nullptr) {
+            cleanup();
         }
         if(!hasActives)
             emit q->end(currentScript);
@@ -1282,6 +1282,7 @@ QString QutsAPIPrivate::scriptName() const {
 
 bool QutsAPIPrivate::endOfFor() {
     auto scope = m_scopes.pop();
+    scope.cleanup();
     const auto inc = scope[FOR_LOOPINCREMENTOR].toInt();
     const auto count = scope[FOR_LOOPINCREMENT].toInt();
     const auto size = scope[FOR_LOOPSIZE].toInt();

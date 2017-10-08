@@ -97,7 +97,10 @@ bool QutsAPIPrivate::use(const QStringList& values) {
                 }
             }
         } else {
-            errorStr(QString("%1: %2, is QUTS_PATH environment variable set properly?").arg(INVALID_SUBSYSTEM).arg(quoted(ss)));
+            const auto errorString = QString("%1: %2, is QUTS_PATH environment variable set properly?").arg(INVALID_SUBSYSTEM).arg(quoted(ss));
+            errorStr(errorString);
+            const QStringList strs = map<QString, Keyword>(m_subSystems.keys(), [](const Keyword& k)->QString{return k;});
+            qWarning() << "Loaded subsystems are" << strs.join(',');
             return false;
         }
     } else {
@@ -386,7 +389,7 @@ bool QutsAPIPrivate::_if(const QStringList& values) {
 bool QutsAPIPrivate::_return(const QStringList& value) {
     Q_UNUSED(value);
     while(m_scopes.length() > 1 && !(m_scopes.top().type() == Scope::CALL)) {
-        m_scopes.pop();
+        m_scopes.pop().cleanup();
     }
     Q_ASSERT(m_scopes.top().type() == Scope::CALL);
     Q_ASSERT(m_scopes.length() > 0);
@@ -406,6 +409,7 @@ bool QutsAPIPrivate::_else(const QStringList& value) {
     Q_ASSERT(!m_scopes.isEmpty());
     m_index = scope.outIndex();
     Q_ASSERT(m_index.isValid());
+    scope.cleanup();
     return true;
 }
 
@@ -510,11 +514,12 @@ bool QutsAPIPrivate::_break(const QStringList& values) {
     Q_UNUSED(values);
     while(m_scopes.top().type() != Scope::FOR
             && m_scopes.top().type() != Scope::CALL) {
-        m_scopes.pop();
+        m_scopes.pop().cleanup();
     }
     const auto scope = m_scopes.pop();
     m_index = scope.outIndex() - 1;
     Q_ASSERT(m_index.isValid());
+    scope.cleanup();
     return true;
 }
 

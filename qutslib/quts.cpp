@@ -46,7 +46,7 @@ bool QutsAPI::execute(const QString& scriptName, const QStringList& data) {
     }
     if(d->append(scriptName, plist)) {
         if(d->setCommandPosition(scriptName) && d->initValues([d, scriptName]() {
-        d->free(scriptName);
+            d->free(scriptName);
         })) {
             d->startExecute();
             return true;

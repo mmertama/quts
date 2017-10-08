@@ -26,6 +26,11 @@ QutsEngine::QutsEngine() {
         m_libraryPath = map<QString, QString>(envs.value(QUTS_PATH).split(';'), [](const QString & p) {return p.trimmed();});
     }
     m_libraryPath += ASSTRING(QUTS_DEFAULT_PATH);
+#ifdef Q_OS_LINUX
+    auto p = QString(ASSTRING(QUTS_DEFAULT_PATH)).split('/');
+    p[p.length() - 2] = "linux"; // gcc stuff
+    m_libraryPath += p.join('/');
+#endif
     m_libraryPath += "libs";
     m_libraryPath += ".";
 }
