@@ -30,7 +30,8 @@ Quts program is one or more .qts files. Quts command is set of command lines exe
 ```
 COMMAND <parameters...> <=return_values...>
 ```
- 
+<b>If</b>, <b>For</b>, <b>Fun</b> and <b>Lambda</b> defines scopes, in the scope local variables are created using <b>var</b> commands, <b>let</b> command creates a global variable. If variable name is not found in the local scope, it is recursively searched from the parent scope. Runtime error occurs if variable is not found.  Scopes are ended with <b>;;</b> command.  
+
 [Quts commands documentation](document/quts_doc.md)
 
 ## Example applications
