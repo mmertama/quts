@@ -16,6 +16,9 @@ Please Look .qts files at test/scripts folder.
 ### QutsConsole
 QutsConsole is a IDE application for quts development, you can use built-in help system, set breakpoints and monitor stack and register content. 
 
+![QutsConsole](document/Screenshot1.png "QutsConsole")
+
+
 ### Command line
 Command line interface to run quts files.
 
@@ -23,7 +26,12 @@ Command line interface to run quts files.
 For using Quts for automated testing you shall embed qutslib using in your application, the API is defined in quts.h header. When you do that in main function the QT subsystem will get access to all QWidgets and QML items in the application. 
 
 ### Documentation
-[Quts API documentation](document/quts_doc.md)
+Quts program is one or more .qts files. Quts command is set of command lines executed from file begin. Each command line format is command + optional parameters + optional return values.
+```
+COMMAND <parameters...> <=return_values...>
+```
+ 
+[Quts commands documentation](document/quts_doc.md)
 
 ## Example applications
 Here are basic features explained by example.
