@@ -6,6 +6,8 @@ win32:!win32-g++:OS = win32
 android:OS = android
 linux:!android:OS = linux
 
+CONFIG-=debug_and_release
+
 equals(OS, win32){
     DEFINES += _ALLOW_KEYWORD_MACROS
     DEFINES += constexpr=const

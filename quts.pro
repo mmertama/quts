@@ -27,6 +27,7 @@ graphics.depends += lib
 quts.depends = $$SUBDIRS
 quts.depends -= quts
 
+
 DISTFILES += \
     License.txt \
     $$PWD/test/scripts/twinkletwinkle.qts \

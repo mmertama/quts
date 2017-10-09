@@ -25,11 +25,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-CONFIG(debug, debug|release) {
-    TYPEDIR = "debug"
-}else {
-    TYPEDIR = "release"
-}
 
 LDIR= $$PWD/../../lib/$$OS/$$TYPEDIR
 message(Quts - get quts library from $$LDIR)
@@ -41,3 +36,5 @@ else: document.commands = python $$PWD/../tools/qutsmdgen.py $$PWD/.. quts_doc.h
 
 PRE_TARGETDEPS +=  $$PWD/../document/quts_doc.md
 QMAKE_EXTRA_TARGETS += document
+
+

@@ -20,11 +20,18 @@ constexpr char HELP_FUNCTION[] = "HELP_FUNCTION";
 #define ASSTRING(x) ASSTRING_F(x)
 
 QutsEngine::QutsEngine() {
+    const auto localEnvs = QProcessEnvironment();
+    if(localEnvs.contains(QUTS_PATH)) {
+        //remove newlines....
+        m_libraryPath = map<QString, QString>(localEnvs.value(QUTS_PATH).split(';'), [](const QString & p) {return p.trimmed();});
+    }
+
     const auto envs = QProcessEnvironment::systemEnvironment();
     if(envs.contains(QUTS_PATH)) {
         //remove newlines....
-        m_libraryPath = map<QString, QString>(envs.value(QUTS_PATH).split(';'), [](const QString & p) {return p.trimmed();});
+        m_libraryPath += map<QString, QString>(envs.value(QUTS_PATH).split(';'), [](const QString & p) {return p.trimmed();});
     }
+
     m_libraryPath += ASSTRING(QUTS_DEFAULT_PATH);
 #ifdef Q_OS_LINUX
     auto p = QString(ASSTRING(QUTS_DEFAULT_PATH)).split('/');

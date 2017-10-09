@@ -4,6 +4,7 @@
 #include <QDirIterator>
 #include <QRegularExpression>
 #include <QTimer>
+#include <QProcessEnvironment>
 
 #include <QDebug>
 
@@ -47,6 +48,14 @@ int main(int argc, char* argv[]) {
         timer.start(5000);
     }
 
+    const auto path = QCoreApplication::applicationDirPath();
+    auto pe = QProcessEnvironment();
+    auto p = pe.value("QUTS_PATH");
+    if(p.isEmpty()){
+        p.append(path);
+        p.append(QString(";%1/libs").arg(path));
+        pe.insert("QUTS_PATH", p);
+    }
     return app.exec();
 }
 
