@@ -26,10 +26,13 @@ Command line interface to run quts files.
 For using Quts for automated testing you shall embed qutslib using in your application, the API is defined in quts.h header. When you do that in main function the QT subsystem will get access to all QWidgets and QML items in the application. 
 
 ### Documentation
-Quts program is one or more .qts files. Quts command is set of command lines executed from file begin. Each command line format is command + optional parameters + optional return values.
+Quts program is one or more .qts files. Quts command is set of command lines executed from file begin. Each command line format is command + optional parameters + optional return values. The number of return values can be zero or more, and they are referred using <b>=</b> character. 
 ```
 COMMAND <parameters...> <=return_values...>
 ```
+
+Most of the commands are taking or returning values implicity or explicitly via stack. <b>$</b> is a special variable that pop a value from a stack and uses that. A Special case is <b>=$</b> return value where return value is pushed on stack.
+
 <b>If</b>, <b>For</b>, <b>Fun</b> and <b>Lambda</b> defines scopes, in the scope local variables are created using <b>var</b> commands, <b>let</b> command creates a global variable. If variable name is not found in the local scope, it is recursively searched from the parent scope. Runtime error occurs if variable is not found.  Scopes are ended with <b>;;</b> command.  
 
 [Quts commands documentation](document/quts_doc.md)
