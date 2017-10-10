@@ -25,6 +25,12 @@ QStringList resources() {
     return list;
 }
 
+bool QutsConsoleApp::copyTo(const QString& from, const QString& to) const {
+    QFile source(from);
+    Q_ASSERT(source.exists());
+    return source.copy(QUrl(to).toLocalFile());
+
+}
 
 int main(int argc, char* argv[]) {
     QGuiApplication app(argc, argv);
@@ -46,6 +52,14 @@ int main(int argc, char* argv[]) {
             }
         });
         timer.start(5000);
+    }
+
+
+    const auto envs = QProcessEnvironment::systemEnvironment();
+    if(envs.contains("QUTS_PATH")){
+        const auto p = envs.value("QUTS_PATH").split(';');
+        for(const auto& s : p)
+            QCoreApplication::addLibraryPath(s);
     }
 
     const auto path = QCoreApplication::applicationDirPath();

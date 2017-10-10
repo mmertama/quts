@@ -63,6 +63,22 @@ ApplicationWindow {
         }
     }
 
+    onCurrentFileChanged: {
+        if(main.currentFile.length > 0){
+            status.text = ""
+            sourceView.clear()
+            consoleView.clear()
+            QutsAPI.removeAllBreakpoints();
+            main.currentName = QutsAPI.read(main.currentFile);
+            if(main.currentName.length == 0){
+                status.text = "Error opening file: " + main.currentFile
+            }
+            sourceView.scrollTop()
+
+        } else{
+            status.text = "Error"
+        }
+    }
 
     function doLine(){
         var name = "*Command line*"
@@ -77,26 +93,12 @@ ApplicationWindow {
         title: "Please choose a file"
         readonly property string scriptFolderKey: "scriptFolder"
         folder: QutsApp.getSetting(scriptFolderKey, shortcuts.home)
+        nameFilters: [ "Quts files (*.qts)" ]
         onVisibleChanged:
             main.currentFile = ""
         onAccepted: {
             QutsApp.setSetting(scriptFolderKey, folder)
             main.currentFile = openDlg.fileUrl
-            if(main.currentFile.length > 0){
-                status.text = ""
-                sourceView.clear()
-                consoleView.clear()
-                QutsAPI.removeAllBreakpoints();
-                main.currentName = QutsAPI.read(openDlg.fileUrl);
-                if(main.currentName.length == 0){
-                    status.text = "Error opening file: " + main.currentFile
-                }
-                sourceView.scrollTop()
-
-            } else{
-                status.text = "Error"
-            }
-
         }
         onRejected: {
         }
@@ -106,10 +108,16 @@ ApplicationWindow {
         id: filelist
         objectName: "resources"
         visible: false
-        anchors.fill: parent
-        onClosed: visible = false
-        onVisibleChanged: {
-            mainview.visible = !visible
+     //   height: openDlg.height
+     //   width: openDlg.width
+        content: resourceList.filter(function(name){
+            var suffix = ".qts"
+            return name.indexOf(suffix, name.length - suffix.length) !== -1
+        })
+
+        onClosed: {
+           main.currentFile = currentName
+           status.text = error
         }
     }
 
@@ -153,7 +161,7 @@ ApplicationWindow {
                 }
                 Button{
                     id:  fileOpenButton
-                    text: "Resources"
+                    text: "Examples"
                     onClicked: filelist.visible = true
                     enabled:  !QutsAPI.active
                 }

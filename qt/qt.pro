@@ -18,7 +18,6 @@ PRE_TARGETDEPS += quts_doc.h
 QMAKE_EXTRA_TARGETS += docTarget
 
 HEADERS +=  \
-    signalhandler.h \
     qtsystem.h \
     guisignal.h \
     signalreceiver.h \

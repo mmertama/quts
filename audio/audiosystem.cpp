@@ -33,7 +33,8 @@ AudioSubsystem::~AudioSubsystem() {
 void AudioSubsystem::create(const QStringList&) {
     if(m_beepPlayer == nullptr) {
         m_beepPlayer.reset(Beeper::BeepPlayer::open<16, 22050>(this)); //create only if Beep is needed.
-        QObject::connect(m_beepPlayer.data(), &Beeper::BeepPlayer::endOfPlay, this, &AudioSubsystem::end);
+        if(m_beepPlayer)
+            QObject::connect(m_beepPlayer.data(), &Beeper::BeepPlayer::endOfPlay, this, &AudioSubsystem::end);
     }
 }
 
@@ -83,7 +84,7 @@ bool AudioSubsystem::isActive() const {
 bool AudioSubsystem::beep(const QStringList& values) {
     MIN_ARG(1)
     if(m_beepPlayer == nullptr) {
-        m_engine.syntaxError(NOT_READY);
+        m_engine.syntaxError(NOT_READY, "Audio player construction has failed");
         return false;
     }
     const auto nv = m_engine.getValue(values[0]);
