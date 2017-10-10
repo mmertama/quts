@@ -48,6 +48,14 @@ int main(int argc, char* argv[]) {
         timer.start(5000);
     }
 
+
+    const auto envs = QProcessEnvironment::systemEnvironment();
+    if(envs.contains("QUTS_PATH")){
+        const auto p = envs.value("QUTS_PATH").split(';');
+        for(const auto& s : p)
+            QCoreApplication::addLibraryPath(s);
+    }
+
     const auto path = QCoreApplication::applicationDirPath();
     auto pe = QProcessEnvironment();
     auto p = pe.value("QUTS_PATH");

@@ -14,7 +14,6 @@
         <file>../scripts/unit.qts</file>
         <file>../scripts/testfind3.qts</file>
         <file>../scripts/testfind2.qts</file>
-        <file>../scripts/testSignals.qts</file>
         <file>../scripts/testQt1.qts</file>
         <file>../scripts/99bottlesOfBeer.qts</file>
         <file>../scripts/fibonacci2.qts</file>
