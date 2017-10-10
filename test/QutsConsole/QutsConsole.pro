@@ -3,8 +3,23 @@ include(../../shared/config.pri)
 
 TEMPLATE = app
 
-QT += qml quick
+
 CONFIG += c++11
+
+QT += qml quick
+QT += multimedia multimediawidgets
+QT += network
+QT += testlib
+QT += widgets
+QT += sql
+
+QT += 3dcore 3drender 3dinput 3dlogic 3dextras 3danimation
+QT += bluetooth
+QT += positioning
+QT += nfc
+QT += svg
+QT += websockets
+QT += serialport
 
 INCLUDEPATH +=                      \
                 ../..               \

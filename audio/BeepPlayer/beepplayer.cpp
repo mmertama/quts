@@ -41,17 +41,26 @@ bool BeepPlayer::createAudioDevice(int sampleSize, int sampleRate) {
     format.setCodec("audio/pcm");
     format.setByteOrder(QAudioFormat::LittleEndian);
     format.setSampleType(sampleSize == 8 ? QAudioFormat::UnSignedInt : QAudioFormat::SignedInt);
-    QAudioDeviceInfo info(QAudioDeviceInfo::defaultOutputDevice());
-    if(! info.isFormatSupported(format)) {
-        qWarning() << "Raw audio format not supported by backend, cannot play audio.";
-        return false;
+
+    auto devices =  QAudioDeviceInfo::availableDevices(QAudio::AudioOutput);
+    devices.prepend(QAudioDeviceInfo::defaultOutputDevice());
+
+    for(const auto& info : devices){
+        if(! info.isFormatSupported(format)) {
+            qWarning() << "Raw audio format not supported by backend...";
+            format = info.nearestFormat(format);
+        }
+
+        if(info.isFormatSupported(format)){
+            m_audio = new QAudioOutput(format, this);
+
+            connect(m_audio, &QAudioOutput::stateChanged, this, &BeepPlayer::stateChanged);
+
+            return true;
+        }
     }
-
-    m_audio = new QAudioOutput(format, this);
-
-    connect(m_audio, &QAudioOutput::stateChanged, this, &BeepPlayer::stateChanged);
-
-    return true;
+    qWarning() << "...cannot play audio.";
+    return false;
 }
 
 void  BeepPlayer::stateChanged(QAudio::State state) {
