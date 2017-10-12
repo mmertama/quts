@@ -77,6 +77,7 @@ ApplicationWindow {
         title: "Please choose a file"
         readonly property string scriptFolderKey: "scriptFolder"
         folder: QutsApp.getSetting(scriptFolderKey, shortcuts.home)
+        nameFilters: [ "Quts files (*.qts)" ]
         onVisibleChanged:
             main.currentFile = ""
         onAccepted: {
@@ -106,7 +107,14 @@ ApplicationWindow {
         id: filelist
         objectName: "resources"
         visible: false
-        anchors.fill: parent
+        height: openDlg.height
+        width: openDlg.width
+
+        content: resourceList.filter(function(name){
+            var suffix = ".qts"
+            return name.indexOf(suffix, name.length - suffix.length) !== -1
+        })
+
         onClosed: visible = false
         onVisibleChanged: {
             mainview.visible = !visible
@@ -153,7 +161,7 @@ ApplicationWindow {
                 }
                 Button{
                     id:  fileOpenButton
-                    text: "Resources"
+                    text: "Examples"
                     onClicked: filelist.visible = true
                     enabled:  !QutsAPI.active
                 }

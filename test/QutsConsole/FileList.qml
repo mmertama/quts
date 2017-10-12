@@ -2,12 +2,15 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.4
+import QtQuick.Dialogs 1.2
 
 
-Item {
+Dialog {
     id: name
     signal closed
-
+    property alias content : files.model
+    property string currentName: files.currentIndex >= 0 ? files.model[files.currentIndex] : null
+    standardButtons: StandardButton.Ok | StandardButton.Cancel | StandardButton.Save
     RowLayout{
         anchors.fill: parent
         ListView{
@@ -15,33 +18,65 @@ Item {
             objectName: "fileList"
             Layout.fillHeight: true
             Layout.fillWidth: true
-            model: resourceList
-            delegate: Row{
+            focus: true
+            highlightFollowsCurrentItem: true
+            delegate: Item{
+                id: delegate
                 objectName: "listitem"
                 property string name: modelData
-                Rectangle{
-                    width: 10
-                    height: 10
-                    color: "Blue"
-                    radius: 45
-                }
+                height: text.height + 2
+                width: files.width
                 Text{
                     id: text
                     text: name
+                }
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        files.currentIndex = index
+                    }
                 }
             }
             highlight: Rectangle {color:"Red"; opacity: 0.5}
         }
         ColumnLayout{
             Button{
-                text: "Open"
-                onClicked: closed()
+                text: "Save to..."
+                onClicked: {
+                    exportDlg.visible = true
+                }
             }
-            Button{
-                id: fileCloseButton
-                text: "Back"
-                onClicked: closed()
+        }
+    }
+
+    onAccepted: {
+        if(clickedButton === StandardButton.Save ) {
+            exportDlg.visible = true
+        }
+    }
+
+    FileDialog {
+        id: exportDlg
+        selectMultiple: false
+        selectFolder: true
+        selectExisting: true
+        title: "Save to..."
+        readonly property string scriptFolderKey: "scriptFolder"
+        folder: QutsApp.getSetting(scriptFolderKey, shortcuts.home)
+        nameFilters: [  name.currentName ]
+
+        onAccepted: {
+            QutsApp.setSetting(scriptFolderKey, folder)
+            var base = name.currentName.substring(name.currentName.lastIndexOf('/') + 1)
+            var fileName = folder + "/" + base
+            if(QutsApp.copyTo(name.currentName, fileName)){
+                console.log("save to", fileName)
+            } else {
+                console.log("save to", fileName, "failed")
             }
+
+        }
+        onRejected: {
         }
     }
 }

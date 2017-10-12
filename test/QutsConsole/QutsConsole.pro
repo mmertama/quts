@@ -13,7 +13,7 @@ QT += testlib
 QT += widgets
 QT += sql
 
-QT += 3dcore 3drender 3dinput 3dlogic 3dextras 3danimation
+#QT += 3dcore 3drender 3dinput 3dlogic 3dextras 3danimation
 QT += bluetooth
 QT += positioning
 QT += nfc

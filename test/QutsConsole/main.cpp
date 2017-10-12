@@ -25,6 +25,11 @@ QStringList resources() {
     return list;
 }
 
+bool QutsConsoleApp::copyTo(const QUrl& from, const QUrl& to) const {
+    QFile source(from.toString());
+    return source.copy(to.toLocalFile());
+
+}
 
 int main(int argc, char* argv[]) {
     QGuiApplication app(argc, argv);

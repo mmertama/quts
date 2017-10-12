@@ -20,6 +20,7 @@ public:
     Q_INVOKABLE QVariant getSetting(const QString& key, const QVariant& defaultValue) const {
         return PersistentData("quts", "markus").getSetting(key, defaultValue);
     }
+    Q_INVOKABLE bool copyTo(const QUrl& from, const QUrl& to) const;
 };
 
 #endif // QUTSCONSOLEAPP_H
