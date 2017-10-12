@@ -7,6 +7,7 @@
 #include "../quts.h"
 
 #include <QDebug>
+#include <QProcessEnvironment>
 
 using namespace Quts;
 
@@ -15,6 +16,22 @@ constexpr char TOKEN[] = R"(([a-zA-Z][\w]*)\:)";
 int main(int argc, char* argv[]) {
     QCoreApplication a(argc, argv);
     QScopedPointer<QutsAPI> quts(new Quts::QutsAPI(nullptr, Quts::QutsAPI::StdPrint));
+
+    const auto envs = QProcessEnvironment::systemEnvironment();
+    if(envs.contains("QUTS_PATH")){
+        const auto p = envs.value("QUTS_PATH").split(';');
+        for(const auto& s : p)
+            QCoreApplication::addLibraryPath(s);
+    }
+
+    const auto path = QCoreApplication::applicationDirPath();
+    auto pe = QProcessEnvironment();
+    auto p = pe.value("QUTS_PATH");
+    if(p.isEmpty()){
+        p.append(path);
+        p.append(QString(";%1/libs").arg(path));
+        pe.insert("QUTS_PATH", p);
+    }
 
     if(argc < 2) {
         qWarning() << QFileInfo(argv[0]).baseName() << "quts-file" << "<parameters>";

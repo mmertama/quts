@@ -98,7 +98,7 @@ ApplicationWindow {
             main.currentFile = ""
         onAccepted: {
             QutsApp.setSetting(scriptFolderKey, folder)
-            main.currentFile = openDlg.fileUrl
+            main.currentFile = QutsApp.toFile(openDlg.fileUrl)
         }
         onRejected: {
         }
