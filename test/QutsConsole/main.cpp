@@ -25,9 +25,10 @@ QStringList resources() {
     return list;
 }
 
-bool QutsConsoleApp::copyTo(const QUrl& from, const QUrl& to) const {
-    QFile source(from.toString());
-    return source.copy(to.toLocalFile());
+bool QutsConsoleApp::copyTo(const QString& from, const QString& to) const {
+    QFile source(from);
+    Q_ASSERT(source.exists());
+    return source.copy(QUrl(to).toLocalFile());
 
 }
 

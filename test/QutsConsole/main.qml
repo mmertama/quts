@@ -69,7 +69,7 @@ ApplicationWindow {
             sourceView.clear()
             consoleView.clear()
             QutsAPI.removeAllBreakpoints();
-            main.currentName = QutsAPI.read(openDlg.fileUrl);
+            main.currentName = QutsAPI.read(main.currentFile);
             if(main.currentName.length == 0){
                 status.text = "Error opening file: " + main.currentFile
             }
@@ -116,7 +116,8 @@ ApplicationWindow {
         })
 
         onClosed: {
-           main.currentFile = currentFile
+           main.currentFile = currentName
+           status.text = error
         }
     }
 
