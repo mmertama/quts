@@ -63,6 +63,22 @@ ApplicationWindow {
         }
     }
 
+    onCurrentFileChanged: {
+        if(main.currentFile.length > 0){
+            status.text = ""
+            sourceView.clear()
+            consoleView.clear()
+            QutsAPI.removeAllBreakpoints();
+            main.currentName = QutsAPI.read(openDlg.fileUrl);
+            if(main.currentName.length == 0){
+                status.text = "Error opening file: " + main.currentFile
+            }
+            sourceView.scrollTop()
+
+        } else{
+            status.text = "Error"
+        }
+    }
 
     function doLine(){
         var name = "*Command line*"
@@ -83,21 +99,6 @@ ApplicationWindow {
         onAccepted: {
             QutsApp.setSetting(scriptFolderKey, folder)
             main.currentFile = openDlg.fileUrl
-            if(main.currentFile.length > 0){
-                status.text = ""
-                sourceView.clear()
-                consoleView.clear()
-                QutsAPI.removeAllBreakpoints();
-                main.currentName = QutsAPI.read(openDlg.fileUrl);
-                if(main.currentName.length == 0){
-                    status.text = "Error opening file: " + main.currentFile
-                }
-                sourceView.scrollTop()
-
-            } else{
-                status.text = "Error"
-            }
-
         }
         onRejected: {
         }
@@ -107,17 +108,15 @@ ApplicationWindow {
         id: filelist
         objectName: "resources"
         visible: false
-        height: openDlg.height
-        width: openDlg.width
-
+     //   height: openDlg.height
+     //   width: openDlg.width
         content: resourceList.filter(function(name){
             var suffix = ".qts"
             return name.indexOf(suffix, name.length - suffix.length) !== -1
         })
 
-        onClosed: visible = false
-        onVisibleChanged: {
-            mainview.visible = !visible
+        onClosed: {
+           main.currentFile = currentFile
         }
     }
 
