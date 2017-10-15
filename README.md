@@ -168,7 +168,7 @@ int main(int argc, char* argv[]) {
         timer.start(5000);
     }	
 ```
-Then you can access and change QObject and QML values. The <b>find<b/> command set the item current by its <code>objectname</code> property. Alternatively
+Then you can access and change QObject and QML values. The <b>find</b> command set the item current by its <code>objectname</code> property. Alternatively
 QML <code>id</code> can be searched with <b>fid</b> command. 
 ```
 use QT 
