@@ -25,6 +25,7 @@ Command line interface to run quts files.
 ### Integrated (for testing)
 For using Quts for automated testing you shall embed qutslib using in your application, the API is defined in quts.h header. When you do that in main function the QT subsystem will get access to all QWidgets and QML items in the application. 
 
+
 ### Documentation
 Quts program is one or more .qts files. Quts command is set of command lines executed from file begin. Each command line format is command + optional parameters + optional return values. The number of return values can be zero or more, and they are referred using <b>=</b> character. 
 ```
@@ -137,6 +138,46 @@ time.repeater 1000 $ maxInt "red"
 # default is forever
 time.repeat 60000
 ```
+
+
+## Using Quts for automated testing
+Quts can be used to write automated tests using its <b>Qt</b> library. The quts libraries are linked to your application by adding it in the .pro file
+```
+LDIR=$$PWD  				# assuming quts.lib is in the working directory
+LIBS += -L$$LDIR -lquts  -lobjectfinder # add quts and objectfinder libraries (e.g. .dll in windows )
+```
+Then in the main function 
+```
+int main(int argc, char* argv[]) {
+    QGuiApplication app(argc, argv);
+    QQmlApplicationEngine engine;
+    QScopedPointer<Quts::QutsAPI> quts(new Quts::QutsAPI(&engine, Quts::QutsAPI::StdPrint));
+    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+
+   // Example how then read tests from command line - we delay executing the script to ensure that QML application is propertyly started 
+    QTimer timer;
+    if(argc > 1) {
+        const QString filename(argv[1]);
+        timer.setSingleShot(true);
+        QObject::connect(&timer, &QTimer::timeout, [&quts, filename]() {
+            const auto name = quts->read(filename);
+            if(!name.isEmpty()) {
+                quts->start(name);
+            }
+        });
+        timer.start(5000);
+    }	
+```
+Then you can access and change QObject and QML values. The <b>find<b/> command set the item current by its <code>objectname</code> property. Alternatively
+QML <code>id</code> can be searched with <b>fid</b> command. 
+```
+use QT 
+QT.FID "view"
+ASSERT
+QT.GET "count" =count
+! count is ($count)
+```
+
 
 [roadtoquts]:#roadtoquts
 ## Road to Quts
