@@ -1,10 +1,10 @@
 # Quts
 
 ## Introduction
-Quts is a simple programming language for writing Qt tests and having fun via writing small programs. It is very simple and plain, having a small step for a non-programmer who wants or needs to write a small program with any extra hassle.  
+Quts is a simple programming language for writing Qt tests and having fun via writing small programs. It is very simple and plain, providing a small step for a non-programmer who wants or needs to write a small program without any extra hassle.  
 
 ## Features
-Loosely stack based imperative language with some functional progeramming twists. The core language is very and focus only on core functionality as program flow. Any other functionality is base on dynamic extensions, subsystems. For example even the integer math it is own subsystem.
+Quts is a loosely stack based, imperative language with some functional progeramming twists. The core language is very small and focus only on core functionality, as just a program flow. Any other functionality is base on dynamic extensions, subsystems. For example even the integer math it is own subsystem.
 
 Currently implemented subsystems are
 
@@ -26,20 +26,20 @@ Open quts.pro in QtCreator and compile. That will generated two applications and
 Please Look .qts files at test/scripts folder.
 
 ### QutsConsole
-QutsConsole is a IDE application for quts development, you can use built-in help system, set breakpoints and monitor stack and register content. 
+QutsConsole is a IDE application for Quts development. You can use built-in help system, set breakpoints and monitor stack and register content. 
 
 ![QutsConsole](document/Screenshot1.png "QutsConsole")
 
 
 ### Command line
-Command line interface to run quts files.
+Command line interface to run Quts files.
 
 ### Integrated (for testing)
-For using Quts for automated testing you shall embed qutslib using in your application, the API is defined in quts.h header. When you do that in main function the QT subsystem will get access to all QWidgets and QML items in the application. 
+For using Quts for automated testing, you can embed qutslib into your application. The API is defined in quts.h header. When you do that in main function, the QT subsystem will get access to all QWidgets and QML items in the application. 
 
 
 ### Basic Syntax
-Quts program is one or more .qts files. Quts command is set of command lines executed from file begin. Each command line format is command + optional parameters + optional return values. The number of return values can be zero or more, and they are referred using <b>=</b> character. 
+Quts program is one or more .qts files. Quts command is a set of command lines executed from file begin. Each command line format is a command + optional parameters + optional return values. The number of return values can be zero or more, and they are referred using <b>=</b> character. 
 ```
 COMMAND <parameters...> <=return_values...>
 ```
@@ -88,7 +88,7 @@ time.sleep 2000
 ```
 
 ### One kind of Fibonacci
-There is also possible use named parameters instead of stack. Then variable passed via local variable context. For the <b>use</b> subsystem name can have an alias name, and the alias can also be empty. Therefore <b>calc</b> is actually <b>int.calc</b>. Int subystem has its own stack where values are pushed and popped from the application stack. e.g. <code>int.calc 1 push subt pop</code> can be traslated as push 1 into math stack, push value from from the application stack, then do subtract by pop both values (note that second value is subtracted from the topmost value) and that value is then popped into application stack, which is then popped into register called 'count'. Basically doing expression: count = count - 1. At the end of <b>if</b> block there is a recursive call of fib function. The <b>call</b> here can be omitted.
+It is also possible to use named parameters instead of stack. Then variable passed via local variable context. For the <b>use</b> subsystem name can have an alias name, and the alias can also be empty. Therefore <b>calc</b> is actually <b>int.calc</b>. Int subystem has its own stack where values are pushed and popped from the application stack. e.g. <code>int.calc 1 push subt pop</code> can be traslated as push 1 into math stack, push value from from the application stack, then do subtract by pop both values (note that second value is subtracted from the topmost value) and that value is then popped into application stack, which is then popped into register called 'count'. Basically doing expression: count = count - 1. At the end of <b>if</b> block there is a recursive call of fib function. The <b>call</b> here can be omitted.
 
 ```
 # fibonacci 3         				
@@ -194,11 +194,11 @@ QT.GET "count" =count
 [roadtoquts]:#roadtoquts
 ## Road to Quts
 
-Basically its story can be dated somewhere back to year 2003 and Doom. I implemented a copy protection system for S60 C2Doom as an interpreter to obfuscate the registration code. That language purpose was to be obscure “write only” language. It featured every command was a single character and program was written as single string. Program was loaded and executed on single 8-bit stack. Therefore program get changed on every step. Furthermore It had only single character hexadecimal numers as command, i.e. ‘9’ was a command that writes int nine into stack and e.g. something like “99*1+!” and writes “82” on console (assuming ‘!’ is a print command). However it was a complete programming language implementing conditional branching and label style jumping.
+Basically its story can be dated somewhere back to year 2003 and Doom. I implemented a copy protection system for S60 C2Doom as an interpreter to obfuscate the registration code. That language purpose was to be obscure “write only” language. It had features as every command is a single character and program is written as single string. Program was loaded and executed on single 8-bit stack. Therefore the program get changed on every step. That program had only a single character hexadecimal numers as a command, i.e. ‘9’ was a command that writes int nine into stack and e.g. something like “99*1+!” and writes “82” on console (assuming ‘!’ is a print command). However it was a complete programming language implementing conditional branching and label style jumping.
 
-That engine year later ported Qt a small weeked project - A simple calculator language, the commands were still single characters, but as obfuscation was needed, it had real numbers, separated stack and instruction arrays.  Later I need need a simple test sequence automation, and I reused engine for driving simple command sequences. Quts (Qt User Test System) was there. Since that a lot of changes has been made, but the Qt testing functionality is availale in the QT subsystem. 
+That engine was years later ported to Qt as small weeked project - A simple calculator language where the commands were still single characters, but as obfuscation was not needed, it had real numbers, separated data stack and instruction arrays.  Later I had a need for a simple test sequence automation, and I reused engine for driving simple command sequences. Quts (Qt User Test System) was born. Since that a lot of changes has been made, but the Qt testing functionality is availale in the QT subsystem. 
 
-The initial Quts language was difficult to program, and to be useful for testing purposes it should be easy. Yet I considered the basic programming model would be very clear for non-programmers: imperative command and its parameters on each line, nothing else.  Initial idea was to keep language very low-level and clean and then write e.g. Python wrapper on top of that, but then I wanted a for-loop. For-loop was an abstraction that enforced me to reconsider many elements in the language. At first labels and goto had to go, as jumping in and out from for loop had confusing side effects. When there was no goto, I had to to implemement “subroutines”, that evolved to be functions. Subroutines and nested for-loops then were reason to have scoped variables.
+The initial Quts language was difficult to program, and to be useful for testing purposes, it should be easy. Yet I considered the basic programming model would be very clear for non-programmers: imperative command and its parameters on each line, nothing else.  Initial idea was to keep language very low-level and clean and then write e.g. Python wrapper on top of that. But then I wanted to have a for-loop. For-loop was an abstraction that enforced me to reconsider many elements of the language. At first labels and goto had to go, as jumping in and out from for loop had confusing side effects. As there was no goto, I had to to implemement “subroutines”, that evolved to be functions. Subroutines and nested for-loops then were reason to have scoped variables.
 
 After choosing that direction Quts have evolved to be a bit easier to program, at least small applications. Therefore I choose publish it if someone would find it fun tool of learn programming, or as a tool for testing engineers to write UI tests for Qt applications. 
 
